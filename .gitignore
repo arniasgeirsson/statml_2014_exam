@@ -36,5 +36,8 @@ nosetests.xml
 .pydevproject
 
 
-#*#
+*#*#
 *~
+slides/
+.DS_Store
+

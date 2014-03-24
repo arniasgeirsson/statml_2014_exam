@@ -107,19 +107,685 @@ LatexCommand tableofcontents
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+- Very short, what is linear regression
+\end_layout
+
+\begin_layout Plain Layout
+- Just-ish as short, what is our problem
+\end_layout
+
+\begin_layout Plain Layout
+- How can machine learning help us to fix our problem? <- just very short?
+ -> One general sentence, followed by a more specific sentence that mentions
+ how linear regression can help us
+\end_layout
+
+\begin_layout Plain Layout
+- How have I done it? the code
+\end_layout
+
+\begin_layout Plain Layout
+- What does it do? / What is happening? Theoreticly
+\end_layout
+
+\begin_layout Plain Layout
+- What are my results? (Deliverables)
+\end_layout
+
+\begin_layout Plain Layout
+- What other methods could I have used?
+\end_layout
+
+\begin_layout Plain Layout
+- - What is good and bad about my method?
+\end_layout
+
+\begin_layout Plain Layout
+- - What else could I have used, what are their strength and weaknesses?
+\end_layout
+
+\begin_layout Plain Layout
+- - Why did I not use those methods, but instead chose to do, what I did?
+\end_layout
+
+\end_inset
+
 Introduction
+\end_layout
+
+\begin_layout Standard
+- What is this?
+\end_layout
+
+\begin_layout Standard
+- What are my main focuses in this report?
+\end_layout
+
+\begin_layout Standard
+- What is the structure of my hand in?
+\end_layout
+
+\begin_layout Standard
+- What is the structure of this report?
+\end_layout
+
+\begin_layout Standard
+- My general assumptions
+\end_layout
+
+\begin_layout Standard
+* That the reader is familiar with basic machine learning concepts (and
+ statistical stuff) and that the reader is familiar with the given assignment
+ text and the given datasets.
+\end_layout
+
+\begin_layout Standard
+- Have I deviated from the assignment text? If yes, how and why?
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+- The math notation I use
 \end_layout
 
 \begin_layout Section
 Predicting the Specific Star Formation Rate
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+- Short intro to this chapter
+\end_layout
+
+\begin_layout Plain Layout
+- Any sub-general assumptions
+\end_layout
+
+\begin_layout Plain Layout
+- What code files are being used here?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Question 1 (linear regression)
 \end_layout
 
+\begin_layout Subsubsection*
+- Very short, what is linear regression
+\end_layout
+
+\begin_layout Standard
+Linear regression is when we try to fit a linear prediction model to our
+ data, allowing us to predict an outcome based on some input
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A sentence that is worth to keep? <- otherwise rephrase into something better
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Slide: 5_Regression1.pdf page 14
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Linear regression is when we want to find 
+\begin_inset Formula $\bar{w}=(w_{0},w_{1})$
+\end_inset
+
+ that minimizes 
+\begin_inset Formula $\sum_{n=1}^{N}(y(x_{n},\bar{w})-t_{n})^{2}=\sum_{n=1}^{N}(w_{0}+w_{1}x_{n}-t_{n})^{2}$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What does this mean, the two equations?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Is this dimensional general?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+- Just-ish as short, what is our problem
+\end_layout
+
+\begin_layout Standard
+We are given..
+\end_layout
+
+\begin_layout Standard
+If we were to be given a set of data points, each describing the 'colours'
+ of a galaxy we could use linear regression to create a model that predicts
+ the sSFR of the given galaxy.
+ This is exactly our case
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+say something more?
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+- How can machine learning help us to fix our problem? <- just very short?
+ -> One general sentence, followed by a more specific sentence that mentions
+ how linear regression can help us
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Combine with the two above?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+- How have I done it? the code
+\end_layout
+
+\begin_layout Standard
+As I have used the 
+\emph on
+sci-kit learn
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegress
+ion.html
+\end_layout
+
+\end_inset
+
+ module to create and train the linear model the produced code is very short
+ and I will therefore not dwell into this, but rather the try and dig deeper
+ into what is actually happening and discuss my results.
+\end_layout
+
+\begin_layout Subsubsection*
+- What does it do? / What is happening? Theoretically
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MUST be seperated into two untitled sections; theory vs our specific problem,
+ hence also slightly rewriting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y(\bar{x},\bar{w})=w_{0}+\sum_{j=1}^{M-1}w_{j}\phi_{j}(\bar{x})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+why\, not\,?
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y(\bar{x},\bar{w})=\sum_{j=0}^{M-1}w_{j}\phi_{j}(\bar{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $M$
+\end_inset
+
+ is ?
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dimensions?
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $\bar{x}=\begin{pmatrix}x_{1}\\
+x_{2}\\
+\vdots\\
+x_{N}
+\end{pmatrix}$
+\end_inset
+
+ is the input, 
+\begin_inset Formula $\bar{w}=\begin{pmatrix}w_{0}\\
+w_{1}\\
+\vdots\\
+w_{M-1}
+\end{pmatrix}$
+\end_inset
+
+ is the weight vector and 
+\begin_inset Formula $\bar{\phi}=\begin{pmatrix}\phi_{0}\\
+\phi_{1}\\
+\vdots\\
+\phi_{M-1}
+\end{pmatrix}$
+\end_inset
+
+ denotes a set of basic functions where 
+\begin_inset Formula $\phi_{0}(x)=1$
+\end_inset
+
+.
+ We can then write
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y(\bar{x},\bar{w})=\bar{w}^{T}\bar{\phi}(\bar{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+What we now need to do is to choose 
+\begin_inset Formula $\bar{\phi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{w}$
+\end_inset
+
+.
+ As we are using a linear regression model 
+\begin_inset Formula $\bar{\phi}(\bar{x})$
+\end_inset
+
+ is simply 
+\begin_inset Formula $\bar{x}$
+\end_inset
+
+, therefore what is left is to determine 
+\begin_inset Formula $\bar{w}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+What we want to do is to minimize the expression 
+\begin_inset Formula $\sum_{n=1}^{N}(y(\bar{x}_{n},\bar{w})-t_{n})^{2}$
+\end_inset
+
+ when 
+\begin_inset Formula $y(\bar{x},\bar{w})=\bar{w}^{T}\bar{\phi}(\bar{x})$
+\end_inset
+
+ which results in the equation 
+\begin_inset Formula $\bar{w}=(\Phi^{T}\Phi)^{-1}\Phi^{T}\bar{t}$
+\end_inset
+
+, where
+\begin_inset Formula 
+\[
+\Phi=\begin{pmatrix}\phi_{0}(x_{1}) & \phi_{1}(x_{1}) & \ldots & \phi_{M-1}(x_{1})\\
+\phi_{0}(x_{2}) & \phi_{1}(x_{2}) & \ldots & \phi_{M-1}(x_{2})\\
+\vdots &  &  & \vdots\\
+\phi_{0}(x_{N}) & \phi_{1}(x_{N}) & \ldots & \phi_{M-1}(x_{N})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That means that if we have a basic function 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ we can calculate the weight vector 
+\begin_inset Formula $\bar{w}$
+\end_inset
+
+.
+ As we are trying to create a linear model we use the very simple linear
+ basic function 
+\begin_inset Formula $\phi(x)=x$
+\end_inset
+
+, that means that our 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ looks like the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Phi=\begin{pmatrix}x_{1} & x_{1} & \ldots & x_{1}\\
+x_{2} & x_{2} & \ldots & x_{2}\\
+\vdots &  &  & \vdots\\
+x_{N} & x_{N} & \ldots & x_{N}
+\end{pmatrix},\,\mathbb{R}^{M-1\times N-1}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Correct matrix dimensions?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For about 4995 good reasons I will not manually write this matrix nor will
+ I otherwise represent it visually in this report, although what I will
+ do, and have done, is write a function 
+\emph on
+w(X,T)
+\emph default
+ that computes the weight vector, the function is very simple as it just
+ implements the function 
+\begin_inset Formula $\bar{w}=(\Phi^{T}\Phi)^{-1}\Phi^{T}\bar{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When the weight vector is found we can insert the values in our linear regressio
+n model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y(\bar{x},\bar{w})=w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As I am using 
+\emph on
+sci-kit learn
+\emph default
+ and their 
+\emph on
+linear_model
+\emph default
+ for this exercise I could also use custom input vectors to extract the
+ weight vector.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Something more about this...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+- What are my results? (Deliverables)
+\end_layout
+
+\begin_layout Standard
+When doing the calculations I get that the weight vector is 
+\begin_inset Formula $\bar{w}=\begin{pmatrix}-8.14943349365\\
+-8.94343502477\\
+-9.37239269736\\
+-8.47801824129\\
+-8.93576405231
+\end{pmatrix}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+-w_0 ?->
+\begin_inset Formula $\bar{w}=\begin{pmatrix}-8.149433493650\\
+-0.794001531121\\
+-1.222959203710\\
+-0.328584747643\\
+-0.786330558664
+\end{pmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, this gives us the final linear regression model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y(\bar{x})=-8.14943349365+-8.94343502477x_{1}+-9.37239269736x_{2}+-8.47801824129x_{3}+-8.93576405231x_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+y(\bar{x})=-8.14943349365+-0.794001531121x_{1}+-1.22295920371x_{2}+-0.328584747643x_{3}+-0.786330558664x_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which we now can use to predict the specific star formation rate of a new
+ unknown galaxy image.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This model has a mean square error of 
+\begin_inset Formula $0.274754600685$
+\end_inset
+
+ on the training data set and a mean square error of 
+\begin_inset Formula $0.275179630629$
+\end_inset
+
+ on the test data set.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Say something on the mean square error results?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+- What other methods could I have used?
+\end_layout
+
+\begin_layout Subsubsection*
+- - What is good and bad about my method?
+\end_layout
+
+\begin_layout Subsubsection*
+- - What else could I have used, what are their strength and weaknesses?
+\end_layout
+
+\begin_layout Subsubsection*
+- - Why did I not use those methods, but instead chose to do, what I did?
+\end_layout
+
 \begin_layout Subsection
 Question 2 (non-linear regression)
+\end_layout
+
+\begin_layout Standard
+We are still trying to solve the same problem, although now we try out 
+\emph on
+non
+\emph default
+-linear regression.
+\end_layout
+
+\begin_layout Subsubsection*
+- How does non-linear regression differ from linear regression?
+\end_layout
+
+\begin_layout Subsubsection*
+- How have I done it? the code
+\end_layout
+
+\begin_layout Subsubsection*
+- What does it do? / What is happening? Theoreticly
+\end_layout
+
+\begin_layout Subsubsection*
+- What are my results? (Deliverables)
+\end_layout
+
+\begin_layout Subsubsection*
+- Are the results better than in the question above, i.e.
+ when using linear regression? Why?
+\end_layout
+
+\begin_layout Subsubsection*
+- What other methods could I have used?
+\end_layout
+
+\begin_layout Subsubsection*
+- - What is good and bad about my method?
+\end_layout
+
+\begin_layout Subsubsection*
+- - What else could I have used, what are their strength and weaknesses?
+\end_layout
+
+\begin_layout Subsubsection*
+- - Why did I not use those methods, but instead chose to do, what I did?
 \end_layout
 
 \begin_layout Section
