@@ -18,7 +18,7 @@ def splitdata(D):
 	return D[:,0:len(D[0])-1], D[:,-1]
 
 def parseData(filename, delimiter=" ",target_class=None,normalizeX=False,
-				normY=None):
+				normY=None,n_components=None):
 	# The whole data set
 	data = np.loadtxt(filename,delimiter=delimiter)
 	if target_class != None:
@@ -27,6 +27,8 @@ def parseData(filename, delimiter=" ",target_class=None,normalizeX=False,
 	inp, target = splitdata(data)
 	if normalizeX:
 		inp = normalize(inp,normY)
+	if n_components != None and n_components > 0:
+		inp = inp[:,:n_components]
 	M = len(inp[0])
 	return data,inp,target,M
 

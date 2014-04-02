@@ -214,6 +214,42 @@ I focus on discussion my results rather on the deep theory behind my methods,
  as 10 pages are limited.
 \end_layout
 
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As I have used the 
+\emph on
+sci-kit learn
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/
+\end_layout
+
+\end_inset
+
+ library extensively through our my code for my machine learning needs,
+ the produced code is rather short and somewhat uninterestingly, and will
+ therefore not dwell into my specific implementations in this report, but
+ rather focus the limited number of pages to briefly discuss the theory
+ behind the used methods and mainly focus on a discussion on my results.
+\end_layout
+
+\begin_layout Standard
+I the reader is interested in the details of my implementations I refer
+ to the code files, I have tried to comment my code to the degree that someone
+ with minor python skills, and a decent understanding of machine learning
+ and linear algebra can understand the code.
+\end_layout
+
 \begin_layout Section
 Predicting the Specific Star Formation Rate
 \end_layout
@@ -239,127 +275,16 @@ status open
 
 \end_layout
 
-\begin_layout Subsection
-Question 1 (linear regression)
-\end_layout
-
-\begin_layout Subsubsection*
-- Very short, what is linear regression
-\end_layout
-
 \begin_layout Standard
-Linear regression is when we try to fit a linear prediction model to our
- data, allowing us to predict an outcome based on some input
+In the following to exercises we will look at linear and non-linear regression
+ for predicting the specific star formation rate (sSFR) for a given galaxy.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-A sentence that is worth to keep? <- otherwise rephrase into something better
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Slide: 5_Regression1.pdf page 14
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Linear regression is when we want to find 
-\begin_inset Formula $\bar{w}=(w_{0},w_{1})$
-\end_inset
-
- that minimizes 
-\begin_inset Formula $\sum_{n=1}^{N}(y(x_{n},\bar{w})-t_{n})^{2}=\sum_{n=1}^{N}(w_{0}+w_{1}x_{n}-t_{n})^{2}$
-\end_inset
-
-.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-What does this mean, the two equations?
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Is this dimensional general?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-- Just-ish as short, what is our problem
-\end_layout
-
-\begin_layout Standard
-We are given..
-\end_layout
-
-\begin_layout Standard
-If we were to be given a set of data points, each describing the 'colours'
- of a galaxy we could use linear regression to create a model that predicts
- the sSFR of the given galaxy.
- This is exactly our case
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-say something more?
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection*
-- How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Combine with the two above?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-- How have I done it? the code
-\end_layout
-
-\begin_layout Standard
-As I have used the 
+I have used the 
 \emph on
-sci-kit learn
+linear_model
 \emph default
 
 \begin_inset Foot
@@ -372,19 +297,55 @@ ion.html
 
 \end_inset
 
- module to create and train the linear model the produced code is very short
- and I will therefore not dwell into this, but rather the try and dig deeper
- into what is actually happening and discuss my results.
+ and the 
+\emph on
+????
+\emph default
+ modules from 
+\emph on
+sci-kit learn
+\emph default
+ to fit my models.
 \end_layout
 
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
+\end_inset
+
+ The file 
+\emph on
+src/question1.py
+\emph default
+ shows my own implementation of linear regression.
+ Although even though it is not 
+\emph on
+sci-kit learn
+\emph default
+ the implementation is still rather simple and I will not give a code explanatio
+n here.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If the reader were to look through my code, the reader will notice that
+ I actually do use 
+\emph on
+sci-kit
+\emph default
+ 
+\emph on
+learn
+\emph default
+ to perform linear regression along side my own implementation.
+ Although this is just to double check that my implementation is correct.
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-MUST be seperated into two untitled sections; theory vs our specific problem,
- hence also slightly rewriting
+Remove the footnote?
 \end_layout
 
 \end_inset
@@ -392,7 +353,69 @@ MUST be seperated into two untitled sections; theory vs our specific problem,
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Question 1 (linear regression)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+http://glowingpython.blogspot.dk/2012/03/linear-regression-with-numpy.html
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If we were to be given a set of data points, each describing the 'colours'
+ of a galaxy we could use linear regression to create a model that predicts
+ the sSFR of the given galaxy.
+ Which is exactly what we want to do
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+say something more?
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Already said in the intro?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Slide: 5_Regression1.pdf page 14
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 y(\bar{x},\bar{w})=w_{0}+\sum_{j=1}^{M-1}w_{j}\phi_{j}(\bar{x})
@@ -401,9 +424,17 @@ y(\bar{x},\bar{w})=w_{0}+\sum_{j=1}^{M-1}w_{j}\phi_{j}(\bar{x})
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
-why\, not\,?
+y(\bar{x},\bar{w})=\sum_{j=0}^{M}w_{j}\phi_{j}(\bar{x})
 \]
 
 \end_inset
@@ -411,18 +442,7 @@ why\, not\,?
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-y(\bar{x},\bar{w})=\sum_{j=0}^{M-1}w_{j}\phi_{j}(\bar{x})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 Where 
 \begin_inset Formula $M$
 \end_inset
@@ -469,7 +489,7 @@ w_{M-1}
  We can then write
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 y(\bar{x},\bar{w})=\bar{w}^{T}\bar{\phi}(\bar{x})
@@ -480,7 +500,7 @@ y(\bar{x},\bar{w})=\bar{w}^{T}\bar{\phi}(\bar{x})
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 What we now need to do is to choose 
 \begin_inset Formula $\bar{\phi}$
 \end_inset
@@ -505,7 +525,7 @@ What we now need to do is to choose
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 What we want to do is to minimize the expression 
 \begin_inset Formula $\sum_{n=1}^{N}(y(\bar{x}_{n},\bar{w})-t_{n})^{2}$
 \end_inset
@@ -533,7 +553,7 @@ What we want to do is to minimize the expression
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 That means that if we have a basic function 
 \begin_inset Formula $\phi(x)$
 \end_inset
@@ -555,7 +575,7 @@ That means that if we have a basic function
  looks like the following:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 \Phi=\begin{pmatrix}1 & x_{1} & \ldots & x_{1}\\
@@ -580,27 +600,27 @@ Correct matrix dimensions?
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 For about 4995 good reasons I will not manually write this matrix nor will
  I otherwise represent it visually in this report, although what I will
  do, and have done, is write a function 
 \emph on
 w(X,T)
 \emph default
- that computes the weight vector, the function is very simple as itis just
- animplementsation the function 
+ that computes the weight vector, the function is very simple as it is just
+ an implementation of the function 
 \begin_inset Formula $\bar{w}=(\Phi^{T}\Phi)^{-1}\Phi^{T}\bar{t}$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 When the weight vector is found we can insert the values in our linear regressio
 n model
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 y(\bar{x},\bar{w})=w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
@@ -611,7 +631,7 @@ y(\bar{x},\bar{w})=w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 As I am using 
 \emph on
 sci-kit learn
@@ -634,8 +654,222 @@ Something more about this...
 
 \end_layout
 
-\begin_layout Subsubsection*
-- What are my results? (Deliverables)
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+As I have used the 
+\emph on
+linear_model
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegress
+ion.html
+\end_layout
+
+\end_inset
+
+ module from the 
+\emph on
+sci-kit learn
+\emph default
+ library to create and train the linear model the produced code is very
+ short and I will therefore not dwell into this, but rather try and dig
+ deeper into what is actually happening and discuss my results.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Make it a general assumption, as this is listed in every chapter ? to shorten
+ the length of the report
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Linear regression is when we want to find the weight vector 
+\begin_inset Formula $\bar{w}=(w_{0},w_{1}...,w_{M})$
+\end_inset
+
+ that minimizes 
+\begin_inset Formula $\sum_{n=1}^{N}(y(x_{n},\bar{w})-t_{n})^{2}$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Loose that last bit?
+\begin_inset Formula $=\sum_{n=1}^{N}(w_{0}+w_{1}x_{n}-t_{n})^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Is this dimensional general?
+\end_layout
+
+\end_inset
+
+ i.e.
+ we want find the line that minimizes the sum of errors, which are the squared
+ distances from our predicted values to the expected values.
+\end_layout
+
+\begin_layout Standard
+When performing linear regression we rewrite 
+\begin_inset Formula $y$
+\end_inset
+
+ to be 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $y(\bar{x},\bar{w})=\sum_{j=0}^{M}w_{j}\phi_{j}(\bar{x})$
+\end_inset
+
+, where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is some basis function.
+ As we are doing linear regression we define 
+\begin_inset Formula $\phi_{0}(x)=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{i}(x)=x$
+\end_inset
+
+, where 
+\begin_inset Formula $i\text{\neq}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As our data is four dimensional our final regression model will be of the
+ form:
+\begin_inset Formula 
+\begin{eqnarray*}
+y(\bar{x},\bar{w}) & = & w_{0}+w_{1}\phi_{1}\left(x_{1}\right)+w_{2}\phi_{2}\left(x_{2}\right)+w_{3}\phi_{3}\left(x_{3}\right)+w_{4}\phi_{4}\left(x_{4}\right)\\
+y(\bar{x},\bar{w}) & = & w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To build or linear regression model we must first define our basis function
+ 
+\begin_inset Formula $\text{\phi}$
+\end_inset
+
+ and here we define that to be 
+\begin_inset Formula $\phi_{0}(x)=1$
+\end_inset
+
+ and for any other 
+\begin_inset Formula $\phi(x)=x$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+write more correctly?
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+Now we can move on to find our weight vector 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bar{w}=\begin{pmatrix}w_{0}\\
+w_{1}\\
+w_{2}\\
+w_{3}\\
+w_{4}
+\end{pmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{w}=\left(w_{0}\, w_{1}\, w_{2}\, w_{3}\, w_{4}\right)^{T}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Can I write it like this?
+\end_layout
+
+\end_inset
+
+.
+ We do that by using the derived formula 
+\begin_inset Formula $\bar{w}=(\Phi^{T}\Phi)^{-1}\Phi^{T}\bar{t}$
+\end_inset
+
+, which is rather simple as when using the linear basis functions, 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ becomes very simple.
 \end_layout
 
 \begin_layout Standard
@@ -648,52 +882,14 @@ When doing the calculations I get that the weight vector is
 \end{pmatrix}$
 \end_inset
 
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{w}=\begin{pmatrix}-8.14943349365\\
--8.94343502477\\
--9.37239269736\\
--8.47801824129\\
--8.93576405231
-\end{pmatrix}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 , this gives us the final linear regression model
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y(\bar{x})=-8.14943349365+-0.794001531121x_{1}+-1.22295920371x_{2}+-0.328584747643x_{3}+-0.786330558664x_{4}
+y(\bar{x})=-8.14943349365-0.794001531121x_{1}-1.22295920371x_{2}-0.328584747643x_{3}-0.786330558664x_{4}
 \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-y(\bar{x})=-8.14943349365+-8.94343502477x_{1}+-9.37239269736x_{2}+-8.47801824129x_{3}+-8.93576405231x_{4}
-\]
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -703,13 +899,6 @@ y(\bar{x})=-8.14943349365+-8.94343502477x_{1}+-9.37239269736x_{2}+-8.47801824129
 \begin_layout Standard
 Which we now can use to predict the specific star formation rate of a new
  unknown galaxy image.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -726,13 +915,18 @@ This model has a mean square error of
 status open
 
 \begin_layout Plain Layout
-Say something on the mean square error results?
+Say something on the mean square error results? -> they are very close to
+ each other?
 \end_layout
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - What other methods could I have used?
@@ -748,6 +942,11 @@ Say something on the mean square error results?
 
 \begin_layout Subsubsection*
 - - Why did I not use those methods, but instead chose to do, what I did?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -883,6 +1082,10 @@ Based on the results its seems that a non-linear regression model fits the
 
 \begin_layout Subsubsection*
 - What other methods could I have used?
+\end_layout
+
+\begin_layout Standard
+Could have used support vector machines or neural networks ..
 \end_layout
 
 \begin_layout Subsubsection*
