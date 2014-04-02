@@ -1126,16 +1126,8 @@ status open
 
 \end_layout
 
-\begin_layout Subsection
-Question 3 (binary classification using support vector machines)
-\end_layout
-
-\begin_layout Subsubsection*
-- Very short, what is classification opposed to regression
-\end_layout
-
 \begin_layout Standard
-Now we move onto classification where we want to assign a label 
+Now we move on to classification where we want to assign a label 
 \emph on
 l
 \emph default
@@ -1143,26 +1135,81 @@ l
 \emph on
 L
 \emph default
- to each data point in the function range, as opposed to regression where
- we try to 
-\begin_inset Note Note
-status open
+ to each data point in the function range, as opposed to regression which
+ we did in the previous assignment.
+ We are given a train and test data set both containing 
+\begin_inset Formula $3000$
+\end_inset
+
+ points either belonging to the star class 
+\begin_inset Formula $0$
+\end_inset
+
+ or the galaxy class 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Initially we will look at binary classification of the data following by
+ principal component analysis and clustering.
+\end_layout
+
+\begin_layout Standard
+In the following three exercises/questions I have used the 
+\emph on
+svm
+\emph default
+
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
-...
- something
+http://scikit-learn.org/stable/modules/svm.html
 \end_layout
 
 \end_inset
 
+, 
+\emph on
+PCA
+\emph default
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
 \end_layout
 
-\begin_layout Subsubsection*
-- Just-ish as short, what is our problem
+\end_inset
+
+ and 
+\emph on
+KMeans
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ modules from 
+\emph on
+sci-kit learn
+\emph default
+ for my machine learning needs.
+\end_layout
+
+\begin_layout Subsection
+Question 3 (binary classification using support vector machines)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 We are now interested in classifying an given object (described in a set
  of features) to be either a star or a galaxy.
  We denote a galaxy to have the label 
@@ -1175,12 +1222,21 @@ We are now interested in classifying an given object (described in a set
 
 .
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kinda already said in the intro?
 \end_layout
 
-\begin_layout Subsubsection*
--? How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1201,16 +1257,30 @@ the last part is not entirely correct...
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Seems kinda silly to keep?
 \end_layout
 
-\begin_layout Subsubsection*
-- How have I done it? the code
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-I have used the support vector machine method to try and classify the data.
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I have used the support vector machines (SVM) to try and perform the binary
+ classification of the stars & galaxy data.
  The specified kernels to be used are the radial Gaussian kernels of the
- form
+ form:
 \end_layout
 
 \begin_layout Standard
@@ -1225,7 +1295,7 @@ k(\bar{x},\bar{z})=e^{(-\gamma||\bar{x}-\bar{z}||^{2})}
 \end_layout
 
 \begin_layout Standard
-As I have used 
+As I have used the 
 \emph on
 svm
 \emph default
@@ -1233,23 +1303,16 @@ svm
 \emph on
 sci-kit learn
 \emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-http://scikit-learn.org/stable/modules/svm.html#svm
-\end_layout
-
-\end_inset
-
  library, this kernel is the default one and goes by the keyword 
 \emph on
 'rbf'
 \emph default
 .
- 
 \end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - What does it do? / What is happening? Theoretically
@@ -1263,23 +1326,28 @@ http://scikit-learn.org/stable/modules/svm.html#svm
 - - The kernel trick
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
-- How I proceeded
+Procedure
 \end_layout
 
 \begin_layout Standard
-There are several hyperparameters one could delve into to although we will
- concentrate on the 
+There are several hyperparameters one could delve in to although we will
+ concentrate on the regularization constant 
 \begin_inset Formula $C$
 \end_inset
 
- and 
+ and the hyperparameter 
 \begin_inset Formula $\gamma$
 \end_inset
 
- hyperparameters
+ for our kernel
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 what are those values?
@@ -1288,10 +1356,66 @@ what are those values?
 \end_inset
 
 .
- It can be hard to find hyperparameters to a given model, especially when
- the range of possible good hyperparameters and the number of parameters
- increases, as it simply gets very computationally expensive.
- I will proceed to determine some initial values for 
+ It can be very hard to find the best hyperparameters to a given model,
+ especially when the range of possible good hyperparameters and the number
+ of parameters increases, as it simply gets very computationally expensive,
+ and SVMs are already very computationally expensive.
+\end_layout
+
+\begin_layout Standard
+To train my classifier I have used grid search and 
+\begin_inset Formula $5$
+\end_inset
+
+-fold cross validation to find the best values for 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, and I have used Jaakkola's heuristic to determine the initial value for
+ 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ Then I train the final C-SVM classifier with the found values for 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and use the final classifier to predict the labels for the train and test
+ data.
+ I must also mention that the hole procedure is done on normalized data
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+why normalize?
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Collapse?
+\end_layout
+
+\end_inset
+
+I will proceed to determine some initial values for 
 \begin_inset Formula $C$
 \end_inset
 
@@ -1303,6 +1427,11 @@ what are those values?
  for the two hyperparameters.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset space ~
 \end_inset
@@ -1311,6 +1440,10 @@ what are those values?
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 As the assignment text so lightly hints at I will use 
 \emph on
 Jaakkola
@@ -1320,7 +1453,12 @@ Jaakkola
 \end_inset
 
 .
- As the assignment text is very clear on how to compute the 
+ 
+\end_layout
+
+\end_inset
+
+As the assignment text is very clear on how to compute the 
 \begin_inset Formula $\sigma_{Jaakkola}$
 \end_inset
 
@@ -1330,7 +1468,7 @@ Jaakkola
 
  values, I will refer to my code 
 \emph on
-src/question3.py
+src/module/common.py
 \emph default
  if the reader is interested in how I coded the heuristic.
  With no further due my computed values are:
@@ -1376,7 +1514,7 @@ Cs:=\{0.01,\,0.1,\,1,\,10,\,100,\,1000\}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-Gs:=\{0.0001523033091,\,0.001523033091,\,0.015230330910000001,\,0.1523033091,\,1.523033091,\,15.230330910000001,\,152.3033091\}
+Gs:=\{0.0001523033091,\,0.001523033091,\,0.01523033091,\,0.1523033091,\,1.523033091,\,15.23033091,\,152.3033091\}
 \]
 
 \end_inset
@@ -1385,7 +1523,7 @@ Gs:=\{0.0001523033091,\,0.001523033091,\,0.015230330910000001,\,0.1523033091,\,1
 \end_layout
 
 \begin_layout Subsubsection*
-- What are my results? (Deliverables)
+Results
 \end_layout
 
 \begin_layout Standard
@@ -1399,11 +1537,11 @@ Now after using the above initial
 
  values in a grid search and 5-fold cross validation I find that the optimal
  combination of hyperparameters from the given sets above are 
-\begin_inset Formula $C=100$
+\begin_inset Formula $C=1000$
 \end_inset
 
  and 
-\begin_inset Formula $\gamma=0.015230330910000001$
+\begin_inset Formula $\gamma=0.01523033091$
 \end_inset
 
 .
@@ -1422,25 +1560,15 @@ Using
 \emph on
 clf
 \emph default
- to classify the test data set I get an accuracy
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-define 'accuracy'
-\end_layout
-
+ to classify the test data set I get an accuracy of 
+\begin_inset Formula $99.9333\%$
 \end_inset
 
- of 
-\begin_inset Formula $99.8\%$
+ on the train data and an accuracy of 
+\begin_inset Formula $99.6\%$
 \end_inset
 
- and an accuracy of 
-\begin_inset Formula $99.4666666667\%$
-\end_inset
-
-
+ on the test data.
 \end_layout
 
 \begin_layout Standard
@@ -1448,13 +1576,14 @@ define 'accuracy'
 \end_inset
 
 
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 I have tried to play around with the hyperparameters, but have yet to produce
  a combination that yielded a massive increase in the test accuracy
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Come with an example
@@ -1463,12 +1592,21 @@ Come with an example
 \end_inset
 
 .
- The very high accuracy of the training data does bother and concern me
- a little bit, as it is a very good indication of overfitting, but then
- again the accuracy of the test data is also very very high, and somehow
- soothes my nerves, although if the test data is very close in space to
- the training data, then the accuracy of the test data is not as soothing
- and my classifier 
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The very high accuracy of the training data does bother and concern me a
+ little bit, as it unfortunately is a very good indication of overfitting,
+ but then again the accuracy of the test data is also very very high, and
+ somehow soothes my nerves, but not quite enough.
+ If the test data is very close in space to the training data, then the
+ accuracy of the test data is not as soothing and my classifier 
 \emph on
 clf
 \emph default
@@ -1482,11 +1620,11 @@ clf
 
 \begin_layout Standard
 The mean square error of the training data is 
-\begin_inset Formula $0.002$
+\begin_inset Formula $0.00066667$
 \end_inset
 
  and the mean square error of the test data is 
-\begin_inset Formula $0.00533333333333$
+\begin_inset Formula $0.004$
 \end_inset
 
 
@@ -1500,19 +1638,20 @@ useful to know?
 \end_inset
 
 .
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 As we can see that even though this method provides some good results it
- is very computational expensive, as we use gridsearch to try and find the
- most optimal hyperparameters, and there might be a concern of overfitting
+ is very computational expensive, as we use grid search to try and find
+ the most optimal hyperparameters, and there might be a concern of overfitting
 \begin_inset Note Note
 status open
 
@@ -1525,22 +1664,64 @@ Then what? Why am I saying this? -> is a good choice/classifier to use?
 .
 \end_layout
 
-\begin_layout Subsubsection*
-- What other methods could I have used?
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see SVMs for binary classification can be pretty good, but it
+ comes at the cost of computation time and expensive hyperparameter selection,
+ some of the other methods that could have been used for the is the linear
+ discriminant analysis (LDA) technique or even the perceptron method, although
+ that would require that the data is linear separable which I highly doubt
+ they are in our case, but then we could use kernels with our perceptron
+ to project the data into a space where they indeed are linear separable.
+ I have a hard time expecting those two methods to perform better then the
+ trained SVM (unless the SVM is way overfitted).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 I could have used LDA, perceptron, linear classification ..
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - - What is good and bad about my method?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Difficult and possible very computational expensive to find good hyperparameters
 , overfitting?, although provides very nice results.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - - What else could I have used, what are their strength and weaknesses?
@@ -1548,6 +1729,11 @@ Difficult and possible very computational expensive to find good hyperparameters
 
 \begin_layout Subsubsection*
 - - Why did I not use those methods, but instead chose to do, what I did?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3067,21 +3253,6 @@ Write more, maybe make it more focused on something I have used in the Variable
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Appendix A
-\end_layout
-
-\begin_layout Subsection
-Tests
 \end_layout
 
 \end_body

@@ -90,6 +90,29 @@ def accuracy(x,t):
 			v = v + 1.0
 	return v / len(x)*100.0
 
+# f assumes that there is atleast one x in X that has another label than the
+# given x
+def f(x,t,X,T):
+    d = float("inf")
+    for i in range(len(T)):
+        if t != T[i]:
+            d_ = np.linalg.norm(x-X[i])
+            if d_ < d:
+                d = d_
+    return d
+
+# Computes the jaakkola sigma based on some data set X and target values T
+def jaakkolaSigma(X,T):
+    a = np.zeros(len(T))
+    for i in range(len(T)):
+        a[i] = f(X[i],T[i],X,T)
+    return np.median(a)
+
+# Computes the jaakkola gamma based on some data set X and target values T
+def jaakkolaGamma(X,T,sigma=None):
+    if sigma is None:
+        sigma = jaakkolaSigma(X,T)
+    return 0.5/(sigma**2)
 
 def chunks(l,n):
     n = len(l)/n
