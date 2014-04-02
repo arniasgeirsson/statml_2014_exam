@@ -1,31 +1,34 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import math
-import pylab as pl
 from sklearn import svm
-from sklearn import cross_validation
 import itertools
 
+def cum_sum(xs):
+    ln, y = len(xs), 0
+    l = np.zeros(ln)
+    for i in range(ln):
+        y += xs[i]
+        l[i] = y
+    return l
+
 def extractClass(X,T):
-    #return X[X[:,-1] in T]
-    # return np.array(filter(lambda x: x in T,X))
-    # ...
     return np.array([x for x in X if x[-1] in T])
 
 def splitdata(D):
 	return D[:,0:len(D[0])-1], D[:,-1]
 
-def parseData(filename, delimiter=" ",target_class=None):
+def parseData(filename, delimiter=" ",target_class=None,normalizeX=False,
+				normY=None):
 	# The whole data set
 	data = np.loadtxt(filename,delimiter=delimiter)
 	if target_class != None:
 		data = extractClass(data,target_class)
-	# # The dataset without the target values
-	# inp = data[:,0:len(data[0])-1]
-	# # The dataset only the target values
-	# target = data[:,-1]
+	# The dataset without the target values
 	inp, target = splitdata(data)
-	return data,inp,target
+	if normalizeX:
+		inp = normalize(inp,normY)
+	M = len(inp[0])
+	return data,inp,target,M
 
 # Assumes that x and z are numpy arrays
 # gamma must be positive
@@ -47,6 +50,21 @@ def MSE(x,t):
 
 def RMSE(x,t):
 	return math.sqrt(MSE(x,t))
+
+# Computes the mean of each axis of a input list of points
+def mean(x):
+    n = np.array(x).T
+    return [sum(n[i])/len(n[i]) for i in range(0,len(n))]
+
+# Computes the variance of the input x, where x is a list
+# of points in a space
+def var(x):
+    m = mean(x)
+    variance = np.matrix(np.zeros(shape=(len(x[0]),len(x[0]))))
+    for point in x:
+        tmp = (np.matrix(point) - np.matrix(m)).T
+        variance = variance + tmp*tmp.T
+    return variance / len(x)
 
 # Creates a list of the mean of each colum-separated feature in a given dataset
 def meanFeature(x):
