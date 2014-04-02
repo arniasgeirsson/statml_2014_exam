@@ -1,7 +1,7 @@
 import modules.common as com
 from sklearn import decomposition
 import matplotlib.pyplot as plt
-import modules.constants as con
+import modules.config as con
 import numpy as np
 import math
 

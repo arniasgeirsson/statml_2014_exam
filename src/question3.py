@@ -1,5 +1,5 @@
 import modules.common as com
-import modules.constants as con
+import modules.config as con
 from sklearn import svm, grid_search
 
 # Normalize the data as SVMs perform better and faster when the data is

@@ -4,7 +4,7 @@ from sklearn.cluster import KMeans
 from sklearn import decomposition
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-import modules.constants as con
+import modules.config as con
 
 # TODO, to normalize?
 toNormalize = True
