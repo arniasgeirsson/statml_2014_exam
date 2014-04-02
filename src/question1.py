@@ -5,9 +5,9 @@ import numpy as np
 # weight vector
 toNormalize = False
 # Read the given train and test data sets
-d, train_X, train_Y, M = com.parseData("data/SSFRTrain2014.dt",
+d, train_X, train_T, M = com.parseData("data/SSFRTrain2014.dt",
                                         normalizeX=toNormalize)
-_, test_X,  test_Y,  _ = com.parseData("data/SSFRTest2014.dt",
+_, test_X,  test_T,  _ = com.parseData("data/SSFRTest2014.dt",
                                         normalizeX=toNormalize,
                                         normY=com.splitdata(d)[0])
 
@@ -30,19 +30,19 @@ def predictOne(x,w):
 
 # Predict the outcome of all the points in X
 def predict(X,w):
-    return [predictOne(x,w) for x in X]
+    return np.array([predictOne(x,w) for x in X])
 
 # Calculate the weight vector w
-w = w(train_X,train_Y,linearPhi)
+w = w(train_X,train_T,linearPhi)
 
 # Calculate the weight vector based on the theoreticly model
 print "Calculated weight vector:\n\t", w
 
 # Print the mean square error on the training and test data sets
 print "Mean square error of the training data set:\t" \
-        , com.MSE(predict(train_X,w), train_Y)
+        , com.MSE(predict(train_X,w), train_T)
 print "Mean square error of the test data set:\t\t" \
-        , com.MSE(predict(test_X,w), test_Y)
+        , com.MSE(predict(test_X,w), test_T)
 
 
 print "----- Linear regression using Scikit -----"
@@ -53,7 +53,7 @@ from sklearn import linear_model
 
 # Create the linear model and train it with the given training data
 model = linear_model.LinearRegression(fit_intercept=True,normalize=False)
-model.fit(train_X, train_Y)
+model.fit(train_X, train_T)
 
 # Computes the weight vector based on a linear regression model
 # where M is the dimension of the data
@@ -66,6 +66,6 @@ def extract_w(model,M):
 print "Extracted weight vector:\n\t", extract_w(model,M)
 # Print the mean square error on the training and test data sets
 print "Mean square error of the training data set:\t" \
-        , com.MSE(model.predict(train_X), train_Y)
+        , com.MSE(model.predict(train_X), train_T)
 print "Mean square error of the test data set:\t\t" \
-        , com.MSE(model.predict(test_X), test_Y)
+        , com.MSE(model.predict(test_X), test_T)
