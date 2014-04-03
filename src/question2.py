@@ -11,12 +11,12 @@ _, test_X,  test_T,  _ = com.parseData("data/SSFRTest2014.dt",
                                         normalizeX=toNormalize,
                                         normY=com.splitdata(d)[0])
 
-parameters = {'n_estimators':[10,100,250], 'max_features':[int(M/3),M],
+parameters = {'n_estimators':[10,100,250,500], 'max_features':[int(M/3),M],
              'max_depth':[None], 'min_samples_split':[2,8],
              'min_samples_leaf':[3,5], 'criterion':['mse']}
 
 if not con.recompute:
-    parameters = {'n_estimators':[100], 'max_features':[int(M/3)],
+    parameters = {'n_estimators':[500], 'max_features':[int(M/3)],
              'max_depth':[None], 'min_samples_split':[2],
              'min_samples_leaf':[3], 'criterion':['mse']}
 

@@ -15,11 +15,12 @@ _, test_X,  test_T,  _ = com.parseData("data/SGTest2014.dt", delimiter=",",
 # As the jaakkola values are static if given the same input values, it is
 # therefore unneeded to recompute them with every run, and I have precomputed
 # it and hardcoded the values
-jaakkolaSigma = 1.81188376031
-jaakkola = 0.1523033091
+jaakkolaSigma = 0.841689072242
+jaakkola = 0.705775578896
 
 if con.recompute:
-    jaakkola = com.jaakkolaGamma(train_X,train_T)
+    jaakkolaSigma = com.jaakkolaSigma(train_X,train_T)
+    jaakkola = com.jaakkolaGamma(train_X,train_T,jaakkolaSigma)
 
 print "Jaakkola sigma: ", jaakkolaSigma
 print "Jaakkola gamma: ", jaakkola
@@ -37,7 +38,7 @@ print "All gamma values used in gridsearch:\n\t", Gs
 parameters = {'kernel':['rbf'], 'C':Cs, 'gamma':Gs}
 
 if not con.recompute:
-    parameters = {'kernel':['rbf'], 'C':[1000], 'gamma':[0.01523033091]}
+    parameters = {'kernel':['rbf'], 'C':[100], 'gamma':[0.00705775578896]}
 
 # Use grid search and 5-fold cross validation to find the best hyperparameters
 # and fit the svm with the found values

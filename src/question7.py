@@ -38,9 +38,9 @@ parameters = { 'n_estimators':[10,100,250,500], 'max_features':['sqrt'],
                 'min_samples_split':[2,4,8], 'min_samples_leaf':[1,10]}
 
 if not con.recompute:
-    parameters = {'n_estimators':[100],'max_features':['sqrt'],
+    parameters = {'n_estimators':[250],'max_features':['sqrt'],
                     'max_depth':[None], 'criterion':['entropy'],
-                    'min_samples_split':[4], 'min_samples_leaf':[1]}
+                    'min_samples_split':[8], 'min_samples_leaf':[1]}
 
 
 # Use gridsearch and cross validation to find the optimized hyperparameters

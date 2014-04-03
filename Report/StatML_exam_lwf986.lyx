@@ -1080,11 +1080,11 @@ on the training and test data
 \end_inset
 
  I get a mean-squared error of 
-\begin_inset Formula $??\%$
+\begin_inset Formula $0.0429865757597\%$
 \end_inset
 
  on the training data and a mean-squared error of 
-\begin_inset Formula $??\%$
+\begin_inset Formula $0.0898122295689\%$
 \end_inset
 
  on the test data.
@@ -1523,8 +1523,8 @@ src/module/common.py
 \begin_inset Formula 
 \[
 \begin{array}{c}
-\sigma_{Jaakkola}=1.81188376031\\
-\gamma_{Jaakkola}=0.15230330910
+\sigma_{Jaakkola}=0.841689072242\\
+\gamma_{Jaakkola}=0.705775578896
 \end{array}
 \]
 
@@ -1559,7 +1559,7 @@ Cs:=\{0.01,\,0.1,\,1,\,10,\,100,\,1000\}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-Gs:=\{0.0001523033091,\,0.001523033091,\,0.01523033091,\,0.1523033091,\,1.523033091,\,15.23033091,\,152.3033091\}
+Gs:=\{0.0007057755788959511,\,0.0070577557889595112,\,0.070577557889595119,\,0.70577557889595111,\,7.0577557889595113,\,70.577557889595113,\,705.77557889595107\}
 \]
 
 \end_inset
@@ -1582,11 +1582,11 @@ Now after using the above initial
 
  values in a grid search and 5-fold cross validation I find that the optimal
  combination of hyperparameters from the given sets above are 
-\begin_inset Formula $C=1000$
+\begin_inset Formula $C=100$
 \end_inset
 
  and 
-\begin_inset Formula $\gamma=0.01523033091$
+\begin_inset Formula $\gamma=0.00705775578896$
 \end_inset
 
 .
@@ -1606,11 +1606,11 @@ Using
 clf
 \emph default
  to classify the test data set I get an accuracy of 
-\begin_inset Formula $99.9333\%$
+\begin_inset Formula $99.5\%$
 \end_inset
 
- on the train data and an accuracy of 
-\begin_inset Formula $99.6\%$
+ on the training data and an accuracy of 
+\begin_inset Formula $99.5333\%$
 \end_inset
 
  on the test data.
@@ -1665,11 +1665,11 @@ clf
 
 \begin_layout Standard
 The mean square error of the training data is 
-\begin_inset Formula $0.00066667$
+\begin_inset Formula $0.005$
 \end_inset
 
  and the mean square error of the test data is 
-\begin_inset Formula $0.004$
+\begin_inset Formula $0.00466666666667$
 \end_inset
 
 
@@ -2591,7 +2591,7 @@ reference "fig:2_4_3_scatterpoints"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3234,6 +3234,11 @@ Need intro
 
 \end_layout
 
+\begin_layout Standard
+In the following I will try and perform multi-class classification on the
+ given Variable Stars data set 
+\end_layout
+
 \begin_layout Subsection
 Question 7 (multi-class classification)
 \end_layout
@@ -3423,11 +3428,11 @@ we know that?
 
 \begin_layout Standard
 When using the build classifier I achieve an accuracy of 
-\begin_inset Formula $100\%$
+\begin_inset Formula $98.4435797665\%$
 \end_inset
 
  on the training data and an accuracy of 
-\begin_inset Formula $??\%$
+\begin_inset Formula $77.5616083009\%$
 \end_inset
 
  on the test data set.
