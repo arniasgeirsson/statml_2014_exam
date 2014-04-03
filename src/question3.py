@@ -17,8 +17,10 @@ _, test_X,  test_T,  _ = com.parseData("data/SGTest2014.dt", delimiter=",",
 # it and hardcoded the values
 jaakkolaSigma = 1.81188376031
 jaakkola = 0.1523033091
-# jaakkolaSigma = com.jaakkolaSigma(train_X,train_T)
-# jaakkola = com.jaakkolaGamma(train_X,train_T,jaakkolaSigma)
+
+if con.recompute:
+    jaakkola = com.jaakkolaGamma(train_X,train_T)
+
 print "Jaakkola sigma: ", jaakkolaSigma
 print "Jaakkola gamma: ", jaakkola
 
@@ -34,15 +36,21 @@ print "All gamma values used in gridsearch:\n\t", Gs
 
 parameters = {'kernel':['rbf'], 'C':Cs, 'gamma':Gs}
 
+if not con.recompute:
+    parameters = {'kernel':['rbf'], 'C':[1000], 'gamma':[0.01523033091]}
+
 # Use grid search and 5-fold cross validation to find the best hyperparameters
 # and fit the svm with the found values
 svc = svm.SVC()
-clf = grid_search.GridSearchCV(svc, parameters, cv = 5, n_jobs = con.n_jobs)
+clf = grid_search.GridSearchCV(svc, parameters, cv = con.cv,
+                                n_jobs = con.n_jobs, verbose=con.verbose)
 clf.fit(train_X,train_T)
 
+# Print the most optimized hyperparameters
 print "Best C value:\t\t", clf.best_params_['C']
 print "Best gamma value:\t", clf.best_params_['gamma']
 
+# Calculate the mean-squared error and the accuracy of the classifier
 print "Mean square error of the training data set:\t" \
         , com.MSE(clf.predict(train_X),train_T)
 print "Mean square error of the test data set:\t\t" \

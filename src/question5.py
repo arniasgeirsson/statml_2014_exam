@@ -21,7 +21,7 @@ k = 2
 # Using n_jobs with anything but 1 does not work for me here on any of my
 # machines
 est = KMeans(n_clusters=k,precompute_distances=True,n_init=50,
-                max_iter=20000,n_jobs=1)
+                max_iter=100,n_jobs=1,verbose=con.verbose)
 est.fit(train_X)
 
 # Get the two 10-dimensional cluster center points
