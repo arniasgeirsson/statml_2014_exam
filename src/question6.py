@@ -10,15 +10,6 @@ _, i_train1, t_train1, _ = com.parseData("data/SGTrain2014.dt", delimiter=",",ta
                                         normalizeX=toNormalize,
                                         normY=com.splitdata(d)[0])
 
-# def g(L):
-#     l = []
-#     for n in L:
-#         if not n in l:
-#             l.append(n)
-#     return np.array(l)
-
-# tt = g(t_train)
-
 def h0(x,X,d,m,d2):
     return np.linalg.norm(x-m)
 
@@ -103,6 +94,15 @@ def h7(x,X,d,m,d2):
 
     return -b+d2
 
+def h7_(x,X,d,m,d2):
+    ln = (2.0/len(X))
+    b = 0.0
+    for x_ in X:
+        b = b + np.dot(x,x_)
+    b = ln * b
+
+    return -b
+
 print "init start"
 l = np.zeros(len(t_train))
 ln0 = (1.0/len(i_train0))
@@ -157,3 +157,4 @@ print "acc: ", com.accuracy(h(i_train,h3),t_train)
 # print "acc: ", com.accuracy(h(i_train,h6),t_train)
 # print "acc: ", com.accuracy(h(i_train,h6_),t_train)
 # print "acc: ", com.accuracy(h(i_train,h7),t_train)
+print "acc: ", com.accuracy(h(i_train,h7_),t_train)

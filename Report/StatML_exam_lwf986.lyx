@@ -2546,7 +2546,7 @@ reference "fig:2_4_3_scatterpoints"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2648,34 +2648,66 @@ Question 6 (kernel mean classifier)
 \end_layout
 
 \begin_layout Standard
-We have some input data X which is separated in a set of classes C.
+We have some input data 
+\begin_inset Formula $X$
+\end_inset
+
+ which is separated in a set of classes 
+\begin_inset Formula $C$
+\end_inset
+
+ where 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+ denotes the subset of 
+\begin_inset Formula $X$
+\end_inset
+
+ which is labeled with 
+\begin_inset Formula $c$
+\end_inset
+
+ where 
+\begin_inset Formula $c\in C$
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
  One might be tricked to say that we have C clusters where mu(X_c) is the
  center point of the corresponding cluster, or the mean of that subset of
  X.
 \end_layout
 
-\begin_layout Standard
-h(x) then loops through the cluster points/means and returns the label of
- the mean where the distances is the smallest between x and mu(X_c).
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-What is it we want to do now? ->
-\end_layout
-
-\begin_layout Standard
-Now we want to try and redefine 
 \begin_inset Formula $h(x)$
 \end_inset
 
- to use dot products/kernel functions.
+ then loops through 
+\begin_inset Formula $C$
+\end_inset
+
+ and returns the label of class 
+\begin_inset Formula $c$
+\end_inset
+
+ where the distances is the smallest between 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{\mu}(X_{c})$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2690,9 +2722,42 @@ h(x)=argmin_{c\in C}\left\Vert x-\mu(X_{c})\right\Vert
 \end_layout
 
 \begin_layout Standard
+Now we want to try and redefine 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ to use kernel functions.
+ So the goal is to rewrite 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ to only use the dot product operation when calculating the distance from
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ to 
+\begin_inset Formula $\text{\mu}(X_{c})$
+\end_inset
+
+ and when calculating the mean of 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 We start by inserting a dummy
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 what is the correct term
@@ -2750,20 +2815,19 @@ h(x)=argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\left\langle x,\mu(X_{
 \end_layout
 
 \begin_layout Standard
-Were
+Were 
 \begin_inset Formula $\left\langle x,y\right\rangle $
 \end_inset
 
  denotes the dot product 
-\begin_inset Formula $x*y$
-\end_inset
-
-
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-need correct dot
+\begin_inset Formula $x\text{\bullet}y$
+\end_inset
+
+ need correct dot
 \end_layout
 
 \end_inset
@@ -2787,7 +2851,7 @@ need correct dot
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mu(X)=\frac{1}{N}\sum_{x\in X}x\text{, where \ensuremath{N}denotes the number of elements in \ensuremath{X}}
+\mu(X_{c})=\frac{1}{N_{c}}\sum_{x\in X_{c}}x\text{, where \ensuremath{N_{c}}denotes the number of elements in \ensuremath{X_{c}}}
 \]
 
 \end_inset
@@ -2801,22 +2865,12 @@ If we replace
 \end_inset
 
  with the above notation then we get
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-It is unclear what N is?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-h(x)=argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\left\langle x,\frac{1}{N}\sum_{x'\in X_{c}}x'\right\rangle +\left\langle \frac{1}{N}\sum_{x''\in X_{c}}x'',\frac{1}{N}\sum_{x'''\in X_{c}}x'''\right\rangle }
+h(x)=argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\left\langle x,\frac{1}{N_{c}}\sum_{x'\in X_{c}}x'\right\rangle +\left\langle \frac{1}{N_{c}}\sum_{x''\in X_{c}}x'',\frac{1}{N_{c}}\sum_{x'''\in X_{c}}x'''\right\rangle }
 \]
 
 \end_inset
@@ -2836,9 +2890,10 @@ fotnote, link or some description?
 \end_inset
 
  of dot products to extract those summations of out the dot products
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{eqnarray*}
 h(x) & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N}\sum_{x''\in X_{c}}\left\langle x'',\frac{1}{N}\sum_{x'''\in X_{c}}x'''\right\rangle }\\
@@ -2846,6 +2901,24 @@ This?1 & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{1}{N}\sum
 2 & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{1}{N}\sum_{x'\in X_{c}}\left(2\left\langle x,x'\right\rangle +/-\frac{1}{N}\sum_{x'''\in X_{c}}\left\langle x',x'''\right\rangle \right)}\\
 or\, this?1 & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N}\sum_{x''\in X_{c}}\frac{1}{N}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }\\
 2 & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{2}{N}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+h(x) & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}}\sum_{x''\in X_{c}}\left\langle x'',\frac{1}{N_{c}}\sum_{x'''\in X_{c}}x'''\right\rangle }\\
+ & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}}\sum_{x''\in X_{c}}\frac{1}{N_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }\\
+ & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{2}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }
 \end{eqnarray*}
 
 \end_inset
@@ -2886,9 +2959,22 @@ k(x,y)=\left\langle \Phi(x),\Phi(y)\right\rangle
 
 \begin_layout Standard
 Which allows us to use the kernel definition to rewrite our current formula
-\end_layout
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
 
-\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
@@ -2901,7 +2987,7 @@ If going with the first one
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{eqnarray*}
 h(x) & = & argmin_{c\in C}\sqrt{\left\langle \Phi(x),\Phi(x)\right\rangle -\frac{1}{N}\sum_{x'\in X_{c}}\left(2\left\langle \Phi(x),\Phi(x')\right\rangle +\frac{1}{N}\sum_{x'''\in X_{c}}\left\langle \Phi(x'),\Phi(x''')\right\rangle \right)}\\
@@ -2913,11 +2999,11 @@ h(x) & = & argmin_{c\in C}\sqrt{\left\langle \Phi(x),\Phi(x)\right\rangle -\frac
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This gives us the final formula
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2940,6 +3026,11 @@ h(x)=argmin_{c\in C}\sqrt{k(x,x)-\frac{1}{N}\sum_{x'\in X_{c}}\left(2k(x,x')+\fr
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -2956,8 +3047,8 @@ If going with the second one
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-h(x) & = & argmin_{c\in C}\sqrt{\left\langle \Phi(x),\Phi(x)\right\rangle -\frac{2}{N}\sum_{x'\in X_{c}}\left\langle \Phi(x),\Phi(x')\right\rangle +\frac{1}{N^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle \Phi(x''),\Phi(x''')\right\rangle }\\
- & = & argmin_{c\in C}\sqrt{k(x,x)-\frac{2}{N}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')}
+h(x) & = & argmin_{c\in C}\sqrt{\left\langle \Phi(x),\Phi(x)\right\rangle -\frac{2}{N_{c}}\sum_{x'\in X_{c}}\left\langle \Phi(x),\Phi(x')\right\rangle +\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle \Phi(x''),\Phi(x''')\right\rangle }\\
+ & = & argmin_{c\in C}\sqrt{k(x,x)-\frac{2}{N_{c}}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')}
 \end{eqnarray*}
 
 \end_inset
@@ -2984,21 +3075,8 @@ This gives us the final formula
 \color none
 \begin_inset Formula 
 \[
-h(x)=argmin_{c\in C}\sqrt{k(x,x)-\frac{2}{N}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')}
+h(x)=argmin_{c\in C}\sqrt{k(x,x)-\frac{2}{N_{c}}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')}
 \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Remove root and k(x,x) as these does not affect the results?
-\end_layout
 
 \end_inset
 
@@ -3036,8 +3114,17 @@ Where we have redefined the nearest mean classifier to only depend on the
 
 \begin_layout Standard
 One could argue that the square-root operation is redundant as it does not
- affect the relationship between the found values, as it is just as multiplier
- a constant to the entire expression.
+ affect the relationship between the found values
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+, as it is just as multiplier a constant to the entire expression
+\end_layout
+
+\end_inset
+
+.
  One could even argue that the first component 
 \begin_inset Formula $k(x,x)$
 \end_inset
@@ -3052,8 +3139,7 @@ must argue how we can be sure of that!
 
 \end_inset
 
-.
- This gives us the final formula as follows:
+ and be removing those we arrive at the final formula:
 \end_layout
 
 \begin_layout Standard
@@ -3071,7 +3157,7 @@ must argue how we can be sure of that!
 \color none
 \begin_inset Formula 
 \[
-h(x)=argmin_{c\in C}-\frac{2}{N}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')
+h(x)=argmin_{c\in C}-\frac{2}{N_{c}}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}k(x'',x''')
 \]
 
 \end_inset
@@ -3081,13 +3167,26 @@ h(x)=argmin_{c\in C}-\frac{2}{N}\sum_{x'\in X_{c}}k(x,x')+\frac{1}{N^{2}}\sum_{x
 
 \begin_layout Standard
 Note that I did notice some other ways to define the final formula although
- I like this one as, even though they might be ugly, the last two summations
- can be easily precomputed and hence somewhat minimize the computation time
- of the expression.
+ I like this one as, even though the last two summations might be ugly,
+ they can be easily precomputed and hence somewhat minimize the computation
+ time of the expression.
 \end_layout
 
 \begin_layout Section
 Variable Stars
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Need intro
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
