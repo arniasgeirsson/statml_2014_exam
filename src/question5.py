@@ -6,54 +6,46 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import modules.config as con
 
-# TODO, to normalize?
+# Make sure that the data is normalized
 toNormalize = True
 # Parse the input data
-_, i_train, t_train, M = com.parseData("data/GTrain2014.dt", delimiter=",",
+_, train_X, train_T, M = com.parseData("data/GTrain2014.dt", delimiter=",",
                                         normalizeX=toNormalize)
 
+# Create the same PCA as used in question 4
 pca = decomposition.PCA(n_components=2)
-pca.fit(i_train,t_train)
-X = pca.transform(i_train)
+pca.fit(train_X,train_T)
+X = pca.transform(train_X)
 
-# TODO it must be cross validated somehow as the cluster center points are not always the same, do n times and average on the cluster center points?
-
-# http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
-# http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_iris.html
-n = 2
-est = KMeans(n_clusters=n,precompute_distances=True,max_iter=20000)
-est.fit(i_train)
+k = 2
+# Using n_jobs with anything but 1 does not work for me here on any of my
+# machines
+est = KMeans(n_clusters=k,precompute_distances=True,n_init=50,
+                max_iter=20000,n_jobs=1)
+est.fit(train_X)
 
 # Get the two 10-dimensional cluster center points
 ccp10 = est.cluster_centers_
-if ccp10[0,0] < ccp10[1,0]:
+# Sort the two cluster points for convenience when printing
+if ccp10[0,0] > ccp10[1,0]:
     ccp10 = np.array((ccp10[1], ccp10[0]))
-print "The two 10-dimensional cluster center points:\n\t",ccp10[0],"\n\t",ccp10[1]
+print "The two 10-dimensional cluster center points:\n\t"\
+        ,ccp10[0],"\n\t",ccp10[1]
 # Project the cluster points to the two first principal components
 ccp = pca.transform(ccp10)
+# Sorth the two cluster points for convenience when printing
+if ccp[0,0] > ccp[1,0]:
+    ccp = np.array((ccp[1], ccp[0]))
 print "The two 2-dimensional cluster center points:\n\t",ccp[0],"\n\t",ccp[1]
 
-# Average the cluster points
-# avg = np.zeros((n,M))
-# a = 100
-# for i in range(a):
-#     _est = KMeans(n_clusters=n,precompute_distances=True,max_iter=20000)
-#     _est.fit(i_train)
-#     cps = _est.cluster_centers_
-#     if cps[0,0] < cps[1,0]:
-#         cps = np.array((cps[1], cps[0]))
-#     avg = avg + cps
-# avg = avg / a
-
-# print "average: ", ccp10 - avg
-# print "avg mse: ", com.MSE(ccp10,avg)
-
+# Plot the same scatter point as in the question 4, although add the found
+# centerpoints
 scatterpoints = plt.figure('Scatterpoints & the two center points')
-# http://wiki.scipy.org/Cookbook/Matplotlib/Show_colormaps
 plt.set_cmap(cm.Spectral)
-plt.scatter(X[:,0],X[:,1], marker=',', c=est.labels_)
-plt.scatter(ccp[:,0],ccp[:,1], marker='o', c=np.arange(len(ccp)))
+plt.scatter(X[:,0],X[:,1], marker='p', c=est.labels_)
+plt.scatter(ccp[:,0],ccp[:,1], marker='v', c='r',s=60)
 
+# Show and/or save the figure
 if con.showfigs:
     scatterpoints.show()
 if con.savefigs:

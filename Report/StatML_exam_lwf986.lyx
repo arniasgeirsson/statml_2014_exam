@@ -1955,7 +1955,7 @@ reference "fig:2_4_1_combined"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2044,60 +2044,6 @@ rephrase, even correct?
  We can see how a diminishing return effect occurs when increasing the number
  of principal components to the increase (or the loss of decrease) in data
  size and computation time.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Figures/2_4_2-eigenImportance.png
-	lyxscale 60
-	scale 70
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:2_4_2_eigenimportance"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2142,7 +2088,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2217,27 +2163,56 @@ Seems not to fit in this exercise
 
 \begin_layout Subsection
 Question 5 (clustering)
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-It is called 
-\emph on
-k
-\emph default
--mean clustering not 
-\emph on
-n
-\emph default
--mean clustering ...
+Fit in somewhere?
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 When looking at the figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2249,82 +2224,76 @@ reference "fig:2_4_3_scatterpoints"
  two or even maybe three groups.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
-n
+k
 \emph default
--Clustering tries to classify a set of unclassified data by trying to find
- 
+-mean clustering tries to classify a set of unclassified data by trying
+ to find 
 \emph on
-n
+k
 \emph default
  means i.e.
  class center points in some data.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 When the clusters have been found one can then start to label new input
  to one of the cluster points by using 1-NN (in other/longer words; simply
  just assign the input to the nearest class)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This can be very useful to compress a data set, ..
  although one must be aware that cluster compression is one way, once you
  compress the data you cannot derive the original input from the cluster
  points.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ...
  or removing noise by clustering groups of the data as single points.
 \end_layout
 
-\begin_layout Standard
-\begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsubsection*
-- Very short, what is clustering
-\end_layout
-
 \begin_layout Standard
 Now we move on to 
 \emph on
-n
+k
 \emph default
 -mean clustering, or just clustering by short, which is good tool to extract
- even more meaning from a data set, and works therefore great with PCA
+ even more meaning from a data set
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-does it really?
+, and works therefore great with PCA
 \end_layout
 
 \end_inset
@@ -2334,7 +2303,7 @@ does it really?
 \emph on
 n
 \emph default
- points which describes the data best as possible.
+ points which describes the data as good as possible.
  This is done by iteratively assigning each point in the input space to
  the cluster point which is the closest, then update the cluster points
  to the mean of the respectively generated cluster group, where the initial
@@ -2343,9 +2312,10 @@ n
 n
 \emph default
  cluster points are selected at random or heuristically.
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This give us the ability to group the data and ...
  
 \begin_inset Note Note
@@ -2360,21 +2330,26 @@ bla bla
 
 \end_layout
 
-\begin_layout Subsubsection*
-- Just-ish as short, what is our problem
-\end_layout
+\end_inset
 
-\begin_layout Subsubsection*
-- How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
-\end_layout
 
-\begin_layout Subsubsection*
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 - How have I done it? the code
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 Once again I have used 
 \emph on
 sci-kit learn
@@ -2416,22 +2391,52 @@ sci-kit learn
  issue, although not in our case.
 \end_layout
 
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
-\end_layout
+\end_inset
 
-\begin_layout Subsubsection*
-- What are my results? (Deliverables)
+
 \end_layout
 
 \begin_layout Standard
-When performing the 2-mean clustering on the galaxy data we are left with
- the following two cluster center points.
- The first 10-dimensional cluster center point: 
-\begin_inset Formula 
-\[
-[22.57357665,\,21.60171032,\,20.1414034,\,19.25840503,\,18.88411818,\,24.0140934,\,22.59878753,\,21.10308629,\,20.23994371,\,19.75283598]
-\]
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+KMeans 
+\emph default
+module from 
+\emph on
+sci-kit learn
+\emph default
+ uses Lloyd's algorithm, which as they say it might be fast but risks falling
+ into local minima.
+ This is because it picks the initial 
+\emph on
+k
+\emph default
+ center points at random.
+ I try to make up for this by making sure that the algorithm is run many
+ times
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ and let the final center points be the ones that occur the most
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Seems like a unfinished line.
+\end_layout
 
 \end_inset
 
@@ -2439,12 +2444,61 @@ When performing the 2-mean clustering on the galaxy data we are left with
 \end_layout
 
 \begin_layout Standard
-The second 10-dimensional cluster center point: 
-\begin_inset Formula 
-\[
-[19.4036691,\,17.95323299,\,17.10661391,\,16.69524351,\,16.44371029,\,21.10768188,\,19.5372249,\,18.7040497,\,18.30417131,\,17.96830223]
-\]
+\begin_inset Note Note
+status open
 
+\begin_layout Plain Layout
+Add some algorithms....
+ ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Results
+\end_layout
+
+\begin_layout Standard
+When performing the 2-mean clustering on the galaxy data we are left with
+ the following two cluster center points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length -1.6cm
+\end_inset
+
+
+\begin_inset Formula $[-0.166893,-0.826119,-1.210908,-1.397877,-1.512199,0.607583,-0.106192,-0.484871,-0.666617,-0.819270]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length -0.8cm
+\end_inset
+
+
+\begin_inset Formula $[1.273834,0.832120,0.168408,-0.232916,-0.403030,1.928551,1.285293,0.605494,0.213195,-0.008197]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
 
@@ -2454,9 +2508,24 @@ The second 10-dimensional cluster center point:
 Although it is very hard to image where these cluster points are located
  in respect with the given data set.
  We can therefore use our PCA solution from before and project the two 10-dimens
-ional center points onto the first two principal components and get two
- 2-dimensional center points.
- These have been plotted in figure 
+ional center points onto the first two principal components and get the
+ following two 2-dimensional center points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & [-2.12378504,0.03487029]\\
+ & [1.82679699,-0.02999406]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These have been plotted in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:2_5_1_scatterandcluster"
@@ -2495,6 +2564,16 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:2_5_1_scatterandcluster"
@@ -2519,19 +2598,18 @@ name "fig:2_5_1_scatterandcluster"
 \end_layout
 
 \begin_layout Standard
-The figure might just confirm our suspicion from before, that the galaxy
- data is somewhat reasonably separable in two groups
-\begin_inset Foot
-status open
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
-
+The figure might just confirm our suspicion from before, that the galaxy
+ data is somewhat reasonably separable in two groups.
+ 
 \end_layout
 
 \end_inset
 
-.
- Of course 
+Of course 
 \emph on
 k
 \emph default
@@ -2559,26 +2637,10 @@ reference "fig:2_4_3_scatterpoints"
  it is relatively easy to spot where the two center points would be positioned
  at, because we can see the data visualized, although for not PCA how could
  one imagine the data in higher dimensions of 3? Making it impossible to
- guess easily how many clusters a data is clustering in.
+ guess easily how many clusters a data is clustered in.
  Even with PCA we are limited to the 1-3 dimensional space, which is most
  likely not enough to visualize all clusters in input spaces that are much
  larger.
-\end_layout
-
-\begin_layout Subsubsection*
-- What other methods could I have used?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What is good and bad about my method?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What else could I have used, what are their strength and weaknesses?
-\end_layout
-
-\begin_layout Subsubsection*
-- - Why did I not use those methods, but instead chose to do, what I did?
 \end_layout
 
 \begin_layout Subsection
