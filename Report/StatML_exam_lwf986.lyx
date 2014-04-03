@@ -9,9 +9,9 @@
 
 \pagestyle{fancy}
 
-\fancyhead[LO,LE]{Peter, Arni}
-\fancyhead[CO,CE]{StatML Assignment 1 - Foundations}
-\fancyhead[RO,RE]{18 / 02 - 2014}
+\fancyhead[LO,LE]{Arni Asgeirsson - lwf986}
+\fancyhead[CO,CE]{StatML Exam Assignment}
+\fancyhead[RO,RE]{03 / 04 - 2014}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -80,7 +80,7 @@ In a Galaxy Far, Far Away
 \end_layout
 
 \begin_layout Author
-Arni Asgeirsson lwf986
+Arni Asgeirsson - lwf986
 \end_layout
 
 \begin_layout Date
@@ -110,98 +110,41 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Section*
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-- Very short, what is linear regression
-\end_layout
-
-\begin_layout Plain Layout
-- Just-ish as short, what is our problem
-\end_layout
-
-\begin_layout Plain Layout
-- How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
-\end_layout
-
-\begin_layout Plain Layout
-- How have I done it? the code
-\end_layout
-
-\begin_layout Plain Layout
-- What does it do? / What is happening? Theoretically
-\end_layout
-
-\begin_layout Plain Layout
-- What are my results? (Deliverables)
-\end_layout
-
-\begin_layout Plain Layout
-- What other methods could I have used?
-\end_layout
-
-\begin_layout Plain Layout
-- - What is good and bad about my method?
-\end_layout
-
-\begin_layout Plain Layout
-- - What else could I have used, what are their strength and weaknesses?
-\end_layout
-
-\begin_layout Plain Layout
-- - Why did I not use those methods, but instead chose to do, what I did?
-\end_layout
-
-\end_inset
-
+\begin_layout Section
 Introduction
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
-- What is this?
-\end_layout
-
-\begin_layout Standard
-- What are my main focuses in this report?
-\end_layout
-
-\begin_layout Standard
-- What is the structure of my hand in?
-\end_layout
-
-\begin_layout Standard
-- What is the structure of this report?
-\end_layout
-
-\begin_layout Standard
-- My general assumptions
-\end_layout
-
-\begin_layout Standard
-* That the reader is familiar with basic machine learning concepts (and
- statistical stuff) and that the reader is familiar with the given assignment
- text and the given datasets.
-\end_layout
-
-\begin_layout Standard
-- Have I deviated from the assignment text? If yes, how and why?
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 - The math notation I use ..
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following is a report documenting my solutions and results gained for
+ the Statistical methods for machine learning course at DIKU 2014 blok 3.
+\end_layout
+
+\begin_layout Standard
+My hand-in contains this pdf file and a 
+\emph on
+src.zip
+\emph default
+ file containing all my code and a 
+\emph on
+readme.txt
+\emph default
+ file which goes into detail on how to configure and run my code, this is
+ also the file I refer the reader to if he or she is interested in running
+ my code.
+ I assume that the reader is familiar with the given assignment text and
+ basic machine learning concepts.
+\end_layout
+
 \begin_layout Standard
 \begin_inset space ~
 \end_inset
@@ -210,25 +153,13 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-I focus on discussion my results rather on the deep theory behind my methods,
- as 10 pages are limited.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As I have used the 
+I have used the 
 \emph on
 sci-kit learn
 \emph default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 http://scikit-learn.org/stable/
@@ -236,17 +167,18 @@ http://scikit-learn.org/stable/
 
 \end_inset
 
- library extensively through our my code for my machine learning needs,
- the produced code is rather short and somewhat uninterestingly, and will
+ library extensively throughout my implementations for my machine learning
+ needs.
+ The produced code is rather short and somewhat uninterestingly, and I will
  therefore not dwell into my specific implementations in this report, but
- rather focus the limited number of pages to briefly discuss the theory
- behind the used methods and mainly focus on a discussion on my results.
+ rather focus the limited number of pages (to try) to briefly discuss the
+ theory behind the used methods and mainly focus on a discussion on my results.
 \end_layout
 
 \begin_layout Standard
-I the reader is interested in the details of my implementations I refer
+If the reader is interested in the details of my implementations I refer
  to the code files, I have tried to comment my code to the degree that someone
- with minor python skills, and a decent understanding of machine learning
+ with basic python skills, and a decent understanding of machine learning
  and linear algebra can understand the code.
 \end_layout
 
@@ -255,61 +187,8 @@ Predicting the Specific Star Formation Rate
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-- Short intro to this chapter
-\end_layout
-
-\begin_layout Plain Layout
-- Any sub-general assumptions
-\end_layout
-
-\begin_layout Plain Layout
-- What code files are being used here?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In the following to exercises we will look at linear and non-linear regression
+In the following two exercises we will look at linear and non-linear regression
  for predicting the specific star formation rate (sSFR) for a given galaxy.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-I have used the 
-\emph on
-linear_model
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegress
-ion.html
-\end_layout
-
-\end_inset
-
- and the 
-\emph on
-????
-\emph default
- modules from 
-\emph on
-sci-kit learn
-\emph default
- to fit my models.
-\end_layout
-
-\end_inset
-
  The file 
 \emph on
 src/question1.py
@@ -321,6 +200,10 @@ sci-kit learn
 \emph default
  the implementation is still rather simple and I will not give a code explanatio
 n here.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Foot
 status collapsed
 
@@ -350,7 +233,12 @@ Remove the footnote?
 
 \end_inset
 
- In question 2 I have used the 
+
+\end_layout
+
+\end_inset
+
+ In question 2 I have used 
 \emph on
 RandomForestRegressor
 \emph default
@@ -762,7 +650,39 @@ Is this dimensional general?
 
  i.e.
  we want find the line that minimizes the sum of errors, which are the squared
- distances from our predicted values to the expected values.
+ distances from our predicted 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $y(x,\bar{w})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ values to the target values 
+\begin_inset Formula $t$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -791,7 +711,7 @@ When performing linear regression we rewrite
 \end_inset
 
  is some basis function.
- As we are doing linear regression we define 
+ As we are doing linear regression, we define 
 \begin_inset Formula $\phi_{0}(x)=1$
 \end_inset
 
@@ -811,7 +731,7 @@ As our data is four dimensional our final regression model will be of the
  form:
 \begin_inset Formula 
 \begin{eqnarray*}
-y(\bar{x},\bar{w}) & = & w_{0}+w_{1}\phi_{1}\left(x_{1}\right)+w_{2}\phi_{2}\left(x_{2}\right)+w_{3}\phi_{3}\left(x_{3}\right)+w_{4}\phi_{4}\left(x_{4}\right)\\
+y(\bar{x},\bar{w}) & = & w_{0}1+w_{1}\phi_{1}\left(x_{1}\right)+w_{2}\phi_{2}\left(x_{2}\right)+w_{3}\phi_{3}\left(x_{3}\right)+w_{4}\phi_{4}\left(x_{4}\right)\\
 y(\bar{x},\bar{w}) & = & w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
 \end{eqnarray*}
 
@@ -821,39 +741,6 @@ y(\bar{x},\bar{w}) & = & w_{0}+w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}+w_{4}x_{4}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-To build or linear regression model we must first define our basis function
- 
-\begin_inset Formula $\text{\phi}$
-\end_inset
-
- and here we define that to be 
-\begin_inset Formula $\phi_{0}(x)=1$
-\end_inset
-
- and for any other 
-\begin_inset Formula $\phi(x)=x$
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-write more correctly?
-\end_layout
-
-\end_inset
-
-.
- 
-\end_layout
-
-\end_inset
-
 Now we can move on to find our weight vector 
 \begin_inset Note Note
 status collapsed
@@ -873,12 +760,12 @@ w_{4}
 \end_inset
 
 
-\begin_inset Formula $\bar{w}=\left(w_{0}\, w_{1}\, w_{2}\, w_{3}\, w_{4}\right)^{T}$
+\begin_inset Formula $\bar{w}=\left(w_{0},\, w_{1},\, w_{2},\, w_{3},\, w_{4}\right)$
 \end_inset
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Can I write it like this?
@@ -950,95 +837,15 @@ Say something on the mean square error results? -> they are very close to
 
 \end_layout
 
-\begin_layout Subsubsection*
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsubsection*
-- What other methods could I have used?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What is good and bad about my method?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What else could I have used, what are their strength and weaknesses?
-\end_layout
-
-\begin_layout Subsubsection*
-- - Why did I not use those methods, but instead chose to do, what I did?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Question 2 (non-linear regression)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-We are still trying to solve the same problem, although now we try out 
-\emph on
-non
-\emph default
--linear regression.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsubsection*
-- How have I done it? the code
-\end_layout
-
-\begin_layout Plain Layout
-I decided to use random forests to perform the nonlinear regression 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-enough, now talk a little about how it works..
- some formulas and stuff
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-When one is imagining a linear line in some space and then 5000 data points,
- one quickly starts to wonder what the chances are that the data really
- is best fit with a linear model.
- This is where non-linear regression comes in, we suspect that our data
- is not linear and therefore try to fit a non-linear regression model to
- our data
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-sounds like a said the same thing 5 times
-\end_layout
-
-\end_inset
-
-.
+When one starts to consider that the training and test sets are each 5000
+ points, one quickly starts to wonder what the chances are that the data
+ really is best fit with a linear model, and therefore try to fit a non-linear
+ model to our data.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1069,17 +876,8 @@ TODO
 \end_layout
 
 \begin_layout Standard
-When performing the regression
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-on the training and test data
-\end_layout
-
-\end_inset
-
- I get a mean-squared error of 
+When performing the regression with the random forests algorithm I get a
+ mean-squared error of 
 \begin_inset Formula $0.0429865757597\%$
 \end_inset
 
@@ -1098,7 +896,7 @@ on the training and test data
 \end_layout
 
 \begin_layout Standard
-The fact that both the training error and test error are that much less
+The fact that both the training error and test error are that much lower
  than what we saw in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1106,7 +904,7 @@ reference "sub:q1_linear_reg"
 
 \end_inset
 
- when doing linear regression could hint at two things.
+ when doing linear regression, could hint at two things.
  Either my model has overfitted the data or a non-linear regression model
  is a more suitable choice for the sSFR data (or a mix of the two).
  Considering that both the training error and the test error are greatly
@@ -1114,35 +912,9 @@ reference "sub:q1_linear_reg"
 \begin_inset Formula $0$
 \end_inset
 
- are venture myself out on a limb and conclude that my non-linear regression
- model has only overfitted the data a little, if at all, and instead conclude
- that a non-linear regression model fits the sSFR data better.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsubsection*
-- What other methods could I have used?
-\end_layout
-
-\begin_layout Plain Layout
-Could have used support vector machines or neural networks ..
-\end_layout
-
-\begin_layout Subsubsection*
-- - What is good and bad about my method?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What else could I have used, what are their strength and weaknesses?
-\end_layout
-
-\begin_layout Subsubsection*
-- - Why did I not use those methods, but instead chose to do, what I did?
-\end_layout
-
-\end_inset
-
-
+ I dare venture myself out on a limb and conclude that my non-linear regression
+ model has only overfitted the data a little, and instead conclude that
+ a non-linear regression model fits the sSFR data better.
 \end_layout
 
 \begin_layout Section
@@ -1151,42 +923,21 @@ Stars vs.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-- Short intro to this chapter
-\end_layout
-
-\begin_layout Plain Layout
-- Any sub-general assumptions
-\end_layout
-
-\begin_layout Plain Layout
-- What code files are being used here?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we move on to classification where we want to assign a label 
+Now we move on to binary classification where we want to assign a label
+ 
 \emph on
 l
 \emph default
- from a finite set of labels 
+ from a binary set of labels 
 \emph on
 L
 \emph default
- to each data point in the function range, as opposed to regression which
- we did in the previous assignment.
+ to each data point in the function range.
  We are given a train and test data set both containing 
 \begin_inset Formula $3000$
 \end_inset
 
- points either belonging to the star class 
+ points, which either belongs to the star class 
 \begin_inset Formula $0$
 \end_inset
 
@@ -1195,12 +946,14 @@ L
 \end_inset
 
 .
- Initially we will look at binary classification of the data following by
- principal component analysis and clustering.
 \end_layout
 
 \begin_layout Standard
-In the following three exercises/questions I have used the 
+Next we will look at principal component analysis and clustering.
+\end_layout
+
+\begin_layout Standard
+I have used the 
 \emph on
 svm
 \emph default
@@ -1246,76 +999,44 @@ http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 \emph on
 sci-kit learn
 \emph default
- for my machine learning needs.
-\end_layout
-
-\begin_layout Subsection
-Question 3 (binary classification using support vector machines)
+ for my machine learning needs
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-We are now interested in classifying an given object (described in a set
- of features) to be either a star or a galaxy.
- We denote a galaxy to have the label 
-\begin_inset Formula $0$
-\end_inset
+, in the following three exercises
+\end_layout
 
- and a star to have the label 
-\begin_inset Formula $1$
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Kinda already said in the intro?
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+\begin_layout Subsection
+Question 3 (binary classification using support vector machines)
 \end_layout
 
 \begin_layout Standard
-Why do we use machine learning for such a task? Well we are able to extract
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Why do we use machine learning for such a task? Well, we are able to extract
  a lot of information from the different kind of images taken of the space
- objects, al though when they get further and further away, it becomes very
+ objects, although when they get further and further away, it becomes very
  difficult to distinguish between the objects when looking at simple features.
  Instead we can use machine learning, and especially classification, to
  try and find patterns in the data and a suitable space where the data is
- linear separable
-\begin_inset Note Note
-status open
+ linear separable.
+\end_layout
 
 \begin_layout Plain Layout
-the last part is not entirely correct...
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Seems kinda silly to keep?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset space ~
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1323,7 +1044,7 @@ Seems kinda silly to keep?
 
 \begin_layout Standard
 I have used the support vector machines (SVM) to try and perform the binary
- classification of the stars & galaxy data.
+ classification of the Stars & Galaxy data.
  The specified kernels to be used are the radial Gaussian kernels of the
  form:
 \end_layout
@@ -1356,33 +1077,12 @@ sci-kit learn
 \end_layout
 
 \begin_layout Subsubsection*
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
-\end_layout
-
-\begin_layout Subsubsection*
-- - The svm part
-\end_layout
-
-\begin_layout Subsubsection*
-- - The kernel trick
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
 Procedure
 \end_layout
 
 \begin_layout Standard
-There are several hyperparameters one could delve in to although we will
- concentrate on the regularization constant 
+There are several hyperparameters one could delve in to.
+ We will concentrate on the regularization constant 
 \begin_inset Formula $C$
 \end_inset
 
@@ -1390,21 +1090,11 @@ There are several hyperparameters one could delve in to although we will
 \begin_inset Formula $\gamma$
 \end_inset
 
- for our kernel
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-what are those values?
-\end_layout
-
-\end_inset
-
-.
+ for our kernel.
  It can be very hard to find the best hyperparameters to a given model,
  especially when the range of possible good hyperparameters and the number
  of parameters increases, as it simply gets very computationally expensive,
- and SVMs are already very computationally expensive.
+ and SVMs are already computationally expensive.
 \end_layout
 
 \begin_layout Standard
@@ -1438,7 +1128,7 @@ To train my classifier I have used grid search and
  data.
  I must also mention that the hole procedure is done on normalized data
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 why normalize?
@@ -1447,34 +1137,6 @@ why normalize?
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Collapse?
-\end_layout
-
-\end_inset
-
-I will proceed to determine some initial values for 
-\begin_inset Formula $C$
-\end_inset
-
- and 
-\begin_inset Formula $\gamma$
-\end_inset
-
- then use grid search and cross validation to try and determine good values
- for the two hyperparameters.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1485,24 +1147,6 @@ I will proceed to determine some initial values for
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-As the assignment text so lightly hints at I will use 
-\emph on
-Jaakkola
-\emph default
-'s heuristic to determine the initial value of 
-\begin_inset Formula $\gamma$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_inset
-
 As the assignment text is very clear on how to compute the 
 \begin_inset Formula $\sigma_{Jaakkola}$
 \end_inset
@@ -1557,10 +1201,31 @@ Cs:=\{0.01,\,0.1,\,1,\,10,\,100,\,1000\}
 \end_layout
 
 \begin_layout Standard
+\begin_inset space \hspace*{}
+\length -1.6cm
+\end_inset
+
+
+\begin_inset Formula $Gs:=\{0.0007057756,\,0.0070577558,\,0.0705775579,\,0.7057755789,\,7.0577557886,\,70.5775578896,\,705.7755788960\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 Gs:=\{0.0007057755788959511,\,0.0070577557889595112,\,0.070577557889595119,\,0.70577557889595111,\,7.0577557889595113,\,70.577557889595113,\,705.77557889595107\}
 \]
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1581,7 +1246,7 @@ Now after using the above initial
 \end_inset
 
  values in a grid search and 5-fold cross validation I find that the optimal
- combination of hyperparameters from the given sets above are 
+ combination of hyperparameters are 
 \begin_inset Formula $C=100$
 \end_inset
 
@@ -1597,7 +1262,7 @@ Now by using these newly found values I train my classifier
 \emph on
 clf
 \emph default
- with the optimal hyperparameters and is ready to try it out.
+ with the optimal hyperparameters.
 \end_layout
 
 \begin_layout Standard
@@ -1605,7 +1270,7 @@ Using
 \emph on
 clf
 \emph default
- to classify the test data set I get an accuracy of 
+ to classify the data sets I get an accuracy of 
 \begin_inset Formula $99.5\%$
 \end_inset
 
@@ -1656,14 +1321,14 @@ The very high accuracy of the training data does bother and concern me a
 clf
 \emph default
  might be a victim of overfitting, but it is hard to tell without any more
- data.
+ data or ML experience.
  It might be that a more optimal combination of hyperparameters would be
  a set that increases the accuracy of the test data, and possible lowers
  the accuracy of the training data.
- 
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The mean square error of the training data is 
 \begin_inset Formula $0.005$
 \end_inset
@@ -1678,30 +1343,6 @@ status open
 
 \begin_layout Plain Layout
 useful to know?
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-As we can see that even though this method provides some good results it
- is very computational expensive, as we use grid search to try and find
- the most optimal hyperparameters, and there might be a concern of overfitting
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Then what? Why am I saying this? -> is a good choice/classifier to use?
 \end_layout
 
 \end_inset
@@ -1776,43 +1417,6 @@ status collapsed
 Question 4 (principal component analysis)
 \begin_inset Note Note
 status collapsed
-
-\begin_layout Subsubsection*
-- Very short, what is pca?
-\end_layout
-
-\begin_layout Plain Layout
-- see below
-\end_layout
-
-\begin_layout Subsubsection*
-- Just-ish as short, what is our problem
-\end_layout
-
-\begin_layout Plain Layout
-- see below
-\end_layout
-
-\begin_layout Subsubsection*
-- How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
-\end_layout
-
-\begin_layout Plain Layout
-- see below
-\end_layout
-
-\begin_layout Subsubsection*
-- - To sum up the three above - why are we doing pca and these plots? Why
- are they interesting?
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
 
 \begin_layout Plain Layout
 Have to mention why I normalize? http://stats.stackexchange.com/questions/69157/wh
@@ -1900,84 +1504,6 @@ Why would one want to use PCA? As hinted above PCA can be a very good tool
  perceptually way.
  Which is exactly what we want to do in this exercise for the given galaxy
  data.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-As already stated I have used the 
-\emph on
-PCA
-\emph default
- module from the 
-\emph on
-sci-kit learn
-\emph default
- library to perform the actual principle component analysis and can be viewed
- in the 
-\emph on
-src/question4.py
-\emph default
- file
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-so what? delete this line?
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Once again the code written to perform the principal component analysis
- is incredible simple and I will therefore go directly to a presentation
- and discussion of my results.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Note that I am well aware that 
-\emph on
-sci-kit learn
-\emph default
- uses singular value decomposition to do the PC analysis which is not something
- we have covered in the lectures, although I have decided to abstract from
- this fact and consider PCA in a more general fashion.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-I am sure we haven't covered this?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2000,14 +1526,14 @@ reference "fig:2_4_1_combined"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename Figures/2_4_1-combined_eigen.png
 	lyxscale 60
-	scale 70
+	scale 50
 
 \end_inset
 
@@ -2015,16 +1541,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
+Plot of the eigenspectrum and explained variance ratio, cumulatively.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:2_4_1_combined"
@@ -2052,24 +1569,14 @@ reference "fig:2_4_1_combined"
 
 \end_inset
 
- also shows a plot of how much the eigenvalues/eigenvectors cumulatively
- cover the variance
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-rephrase, even correct?
-\end_layout
-
-\end_inset
-
- (the purple and circled line).
+ also shows a plot (the purple and circled line) of how much the eigenvalues
+ cumulatively cover the variance.
  We can see that by only looking at the first principle component we have
  already covered about 
 \begin_inset Formula $85\%$
 \end_inset
 
- the data.
+ of the total variance.
  This can be useful to determine how many principal components one should
  look at when doing dimensionality reduction, as based on the figure one
  might argue that the added computation time is not worth the last 
@@ -2133,14 +1640,14 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename Figures/2_4_2-scatter.png
 	lyxscale 60
-	scale 70
+	scale 50
 
 \end_inset
 
@@ -2148,16 +1655,8 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
+A scatter plot of the Galaxy data set projected onto its first two principal
+ components, accompanied with its respected egienvectors.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:2_4_3_scatterpoints"
@@ -2177,42 +1676,13 @@ name "fig:2_4_3_scatterpoints"
 
 \end_layout
 
-\begin_layout Subsubsection*
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Seems not to fit in this exercise
-\end_layout
-
-\begin_layout Subsubsection*
-- What other methods could I have used?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What is good and bad about my method?
-\end_layout
-
-\begin_layout Subsubsection*
-- - What else could I have used, what are their strength and weaknesses?
-\end_layout
-
-\begin_layout Subsubsection*
-- - Why did I not use those methods, but instead chose to do, what I did?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Question 5 (clustering)
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Fit in somewhere?
@@ -2357,88 +1827,6 @@ n
 n
 \emph default
  cluster points are selected at random or heuristically.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-This give us the ability to group the data and ...
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bla bla
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-- How have I done it? the code
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Once again I have used 
-\emph on
-sci-kit learn
-\emph default
- library, this time I have used the 
-\emph on
-cluster
-\emph default
- module and in particualy the 
-\emph on
-KMeans
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
-\end_layout
-
-\end_inset
-
- function.
- The function simply computes the 
-\emph on
-n
-\emph default
--mean cluster center points.
- Although it is worth noting that 
-\emph on
-sci-kit learn
-\emph default
- using Lloyd's algorithm, which as they say it might be fast but risks falling
- into local minima.
- Although when running the code multiple times and matching the found cluster
- points against a set of averaged cluster points then the results seems
- reasonable close enough, and will not gives this much more thought as it
- will not affect our results nor discussions much, this is an importance
- issue, although not in our case.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2457,40 +1845,17 @@ module from
 \emph on
 sci-kit learn
 \emph default
- uses Lloyd's algorithm, which as they say it might be fast but risks falling
- into local minima.
+ uses Lloyd's algorithm, which as they write might be fast but risks falling
+ into a local minima.
  This is because it picks the initial 
 \emph on
 k
 \emph default
  center points at random.
  I try to make up for this by making sure that the algorithm is run many
- times
+ times.
 \begin_inset Note Note
 status collapsed
-
-\begin_layout Plain Layout
- and let the final center points be the ones that occur the most
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Seems like a unfinished line.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
 
 \begin_layout Plain Layout
 Add some algorithms....
@@ -2507,8 +1872,8 @@ Results
 \end_layout
 
 \begin_layout Standard
-When performing the 2-mean clustering on the galaxy data we are left with
- the following two cluster center points.
+When performing the 2-mean clustering on the normalized galaxy data we are
+ left with the following two cluster center points.
 \end_layout
 
 \begin_layout Standard
@@ -2591,14 +1956,14 @@ reference "fig:2_4_3_scatterpoints"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename Figures/2_5_1-scatterandcenter.png
 	lyxscale 60
-	scale 70
+	scale 50
 
 \end_inset
 
@@ -2609,16 +1974,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
+A scatter plot of the Galaxy data set projected onto its first two principal
+ components, along with two to cluster points.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:2_5_1_scatterandcluster"
@@ -2630,10 +1987,6 @@ name "fig:2_5_1_scatterandcluster"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2667,11 +2020,11 @@ always
 k
 \emph default
  clusters even though not one of them might make sense in any useable way,
- which is in a sense one of the pitfalls of the 
+ which is one of the pitfalls of the 
 \emph on
 k
 \emph default
--mean clustering.
+-mean clustering technique.
  When looking at the scatter point in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2684,7 +2037,7 @@ reference "fig:2_4_3_scatterpoints"
  one imagine the data in higher dimensions of 3? Making it impossible to
  guess easily how many clusters a data is clustered in.
  Even with PCA we are limited to the 1-3 dimensional space, which is most
- likely not enough to visualize all clusters in input spaces that are much
+ often not enough to visualize all clusters in input spaces that are much
  larger.
 \end_layout
 
@@ -2718,18 +2071,6 @@ We have some input data
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
- One might be tricked to say that we have C clusters where mu(X_c) is the
- center point of the corresponding cluster, or the mean of that subset of
- X.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2825,7 +2166,7 @@ h(x)=argmin_{c\in C}\sqrt{\left\Vert x-\mu(X_{c})\right\Vert ^{2}}
 \end_layout
 
 \begin_layout Standard
-This allows use to rewrite the square product
+This allows use to rewrite the square product to use the dot product operation
 \begin_inset Note Note
 status open
 
@@ -2896,7 +2237,7 @@ status open
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mu(X_{c})=\frac{1}{N_{c}}\sum_{x\in X_{c}}x\text{, where \ensuremath{N_{c}}denotes the number of elements in \ensuremath{X_{c}}}
+\mu(X_{c})=\frac{1}{N_{c}}\sum_{x\in X_{c}}x\text{, where \ensuremath{N_{c}} denotes the number of elements in \ensuremath{X_{c}}}
 \]
 
 \end_inset
@@ -2956,14 +2297,31 @@ or\, this?1 & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{
 \end_inset
 
 
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{eqnarray*}
 h(x) & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}}\sum_{x''\in X_{c}}\left\langle x'',\frac{1}{N_{c}}\sum_{x'''\in X_{c}}x'''\right\rangle }\\
  & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -2\frac{1}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}}\sum_{x''\in X_{c}}\frac{1}{N_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }\\
  & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{2}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+h(x) & = & argmin_{c\in C}\sqrt{\left\langle x,x\right\rangle -\frac{2}{N_{c}}\sum_{x'\in X_{c}}\left\langle x,x'\right\rangle +\frac{1}{N_{c}^{2}}\sum_{x''\in X_{c}}\sum_{x'''\in X_{c}}\left\langle x'',x'''\right\rangle }
 \end{eqnarray*}
 
 \end_inset
@@ -3015,7 +2373,7 @@ Which allows us to use the kernel definition to rewrite our current formula
 \uwave off
 \noun off
 \color none
-
+ into the following
 \begin_inset Note Note
 status collapsed
 
@@ -3159,22 +2517,12 @@ Where we have redefined the nearest mean classifier to only depend on the
 
 \begin_layout Standard
 One could argue that the square-root operation is redundant as it does not
- affect the relationship between the found values
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-, as it is just as multiplier a constant to the entire expression
-\end_layout
-
-\end_inset
-
-.
+ affect the relationship between the found values.
  One could even argue that the first component 
 \begin_inset Formula $k(x,x)$
 \end_inset
 
- is redundant as well
+ is redundant as well,
 \begin_inset Note Note
 status open
 
@@ -3222,21 +2570,10 @@ Variable Stars
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Need intro
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In the following I will try and perform multi-class classification on the
- given Variable Stars data set 
+In the following I will try to perform multi-class classification on the
+ given Variable Stars data set, followed by a short discussion on three
+ different ways of overfitting when considering the multi-classification
+ at hand.
 \end_layout
 
 \begin_layout Subsection
@@ -3270,7 +2607,7 @@ ifier.html
 \end_layout
 
 \begin_layout Standard
-Note that the data is very scarce and some of the classes have very few
+I noted that the data is very scarce and some of the classes have very few
  data points assigned to them.
  This might affect the solutions greatly as the small classes might be forgotten.
 \end_layout
@@ -3284,24 +2621,15 @@ The reason of choice lies in the fact that we had to implement LDA in one
  of the mandatory assignments and I found it quite fun to implement and
  work with and found LDA to be one of the ML methods that was somewhat easy
  to grasp and play with.
- The LDA build in the mandatory assignment left me an impression that LDA
- works rather well generally and as it does not have to any hyperparameters
- to worry about it is a very simple model and easy to work with
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-and also gave me some decent results in this exercise
-\end_layout
-
-\end_inset
-
-.
+ The construction of LDA in the mandatory assignment left me the impression
+ that LDA works rather well in general and as it does not really have any
+ hyperparameters to worry about it is a very simple model and easy to work
+ with.
 \end_layout
 
 \begin_layout Standard
-The only thing that bothers me about LDA is that it assumes that all the
- class covariances are identical
+The only thing that bothers me about LDA used is that it assumes that all
+ the class covariances are identical
 \begin_inset Note Note
 status open
 
@@ -3333,8 +2661,8 @@ risky to say that?
 \end_layout
 
 \begin_layout Standard
-When using LDA to classify the Variable Stars data set, the model is fit
- with the training data, I get an accuracy of 
+When using LDA to classify the Variable Stars data set and the model is
+ fit with the training data, I get an accuracy of 
 \begin_inset Formula $81.5823605707\%$
 \end_inset
 
@@ -3343,6 +2671,8 @@ When using LDA to classify the Variable Stars data set, the model is fit
 \end_inset
 
  on the test data.
+ These values seems to be good, as it is not very poor results, and I do
+ not believe that overfitting is a concern here.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3353,9 +2683,8 @@ Non-linear multi classification
 I find the simplicity and easy-achievable efficiency of random forests to
  be intriguing.
  Random forests makes few assumptions on the data opposed to many other
- classifiers and ...
- and it was one of the classifiers I tried out that gave the best results
- on the test set (human overfitting much?).
+ classifiers and it was one of the classifiers I tried out that gave the
+ best results on the test set (human overfitting?).
 \begin_inset Note Note
 status collapsed
 
@@ -3436,16 +2765,9 @@ When using the build classifier I achieve an accuracy of
 \end_inset
 
  on the test data set.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Compare the two models?
-\end_layout
-
-\end_inset
-
-
+ Compared to the results with the LDA I have a feeling that my random forest
+ might have been slightly overfitted because of the very high training accuracy,
+ and only decent test accuracy.
 \end_layout
 
 \begin_layout Subsection
@@ -3464,10 +2786,10 @@ name "sub:Traditional-overfitting"
 \end_layout
 
 \begin_layout Standard
-Considering that there are so few data points but so many features and classes
- in the Variable Star data set, one might be concerned of traditional overfittin
-g as there might simply not be enough data points to create a generally
- well performing classifier.
+Considering that there are so few data points, but so many features and
+ classes in the Variable Star data set, one might be concerned of traditional
+ overfitting as there might simply not be enough data points to create a
+ generally well performing classifier.
 \end_layout
 
 \begin_layout Standard
@@ -3490,14 +2812,12 @@ Parameter tweak overfitting
 \end_layout
 
 \begin_layout Standard
-This has not been such a big concern when fitting my classifiers in question
- 7.
- Yet, it is still a very big concern in machine learning in general, as
- once you move away from simple classifier such as KNN which only have a
- very few and conceptually simple hyperparameters, and move on to more advanced
- and complex classifiers, or regression models for that matter, you tend
- to get an increase in the number of hyperparameters, and tweaking these
- just right, without a tendency towards overfitting is very hard.
+Hyperparameter optimization is a very big concern in machine learning in
+ general, as once you move away from simple classifiers such as KNN which
+ only have a very few and conceptually simple hyperparameters, and move
+ on to more advanced and complex classifiers, or regression models for that
+ matter, you tend to get an increased number of hyperparameters, and tweaking
+ these just right, without a tendency towards overfitting is very hard.
  When dealing with many hyperparameters it is often hard to distinguish
  between their meaning when comparing their values with the results of the
  build classifier and hence also hard to figure out when the chosen values
@@ -3518,7 +2838,7 @@ reference "sub:Traditional-overfitting"
 \end_inset
 
 .
- Seeing that we don't have many that training points and it is somewhat
+ Seeing that we don't have that many training points and it is somewhat
  hard to get very good results with the created classifiers, one might be
  very tempted to focus on the training error and try to maximize this
 \begin_inset Note Note
@@ -3531,18 +2851,8 @@ status collapsed
 \end_inset
 
  and therefore possibly overfit the classifier.
- One of the golden rules we have learned in this course is that going for
- 0 empirical risk
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-correct? Check slides
-\end_layout
-
-\end_inset
-
- is not the way to go.
+ One of the golden rules we have learned in this course is, that going for
+ 0 empirical risk is not the way to go.
  It is very easy to get 
 \begin_inset Formula $100\%$
 \end_inset
