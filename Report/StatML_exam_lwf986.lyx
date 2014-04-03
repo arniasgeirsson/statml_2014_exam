@@ -350,11 +350,37 @@ Remove the footnote?
 
 \end_inset
 
+ In question 2 I have used the 
+\emph on
+RandomForestRegressor
+\emph default
 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegre
+ssor.html
+\end_layout
+
+\end_inset
+
+ from 
+\emph on
+sci-kit learn
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
 Question 1 (linear regression)
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:q1_linear_reg"
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
@@ -951,9 +977,10 @@ status collapsed
 
 \begin_layout Subsection
 Question 2 (non-linear regression)
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We are still trying to solve the same problem, although now we try out 
 \emph on
 non
@@ -961,12 +988,38 @@ non
 -linear regression.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Subsubsection*
-- How does non-linear regression differ from linear regression?
+- How have I done it? the code
 \end_layout
 
-\begin_layout Standard
-If one still has the ability to imagine a linear line in some space 
+\begin_layout Plain Layout
+I decided to use random forests to perform the nonlinear regression 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+enough, now talk a little about how it works..
+ some formulas and stuff
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+- What does it do? / What is happening? Theoretically
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -989,85 +1042,25 @@ sounds like a said the same thing 5 times
 \end_layout
 
 \begin_layout Subsubsection*
-- How have I done it? the code
-\end_layout
-
-\begin_layout Standard
-I decided to use polynomial regression
+Results
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-or something
-\end_layout
-
-\end_inset
-
-, as mentioned 
-\emph on
-src/question2.py
-\emph default
- contains the code for this exercise.
- Here we can see that 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bla bla bla
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
-\end_layout
-
-\begin_layout Subsubsection*
-- What are my results? (Deliverables)
-\end_layout
-
-\begin_layout Standard
-* MSE training
-\end_layout
-
-\begin_layout Standard
-* MSE test
-\end_layout
-
-\begin_layout Standard
 * How did I achieve good generalization performance?
 \end_layout
 
-\begin_layout Subsubsection*
-- Are the results better than in the question above, i.e.
- when using linear regression? Why?
-\end_layout
-
-\begin_layout Standard
-The fact that the error on the training data is much less could hint of
- overfitting
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-what is that?
+TODO
 \end_layout
 
 \end_inset
 
-, although when considering that the error on the test data is also greatly
- reduced I quickly diminish my suspicion of overfitting as in the case of
- overfitting the error of the test data should have increased or not decreased
- along side with the training error.
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-Show graph that shows overfitting based on altering some of the hyperparameters
- in this exercise?
 \end_layout
 
 \end_inset
@@ -1076,15 +1069,62 @@ Show graph that shows overfitting based on altering some of the hyperparameters
 \end_layout
 
 \begin_layout Standard
-Based on the results its seems that a non-linear regression model fits the
- sSRF data better than a linear regression model.
+When performing the regression
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+on the training and test data
 \end_layout
+
+\end_inset
+
+ I get a mean-squared error of 
+\begin_inset Formula $??\%$
+\end_inset
+
+ on the training data and a mean-squared error of 
+\begin_inset Formula $??\%$
+\end_inset
+
+ on the test data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The fact that both the training error and test error are that much less
+ than what we saw in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:q1_linear_reg"
+
+\end_inset
+
+ when doing linear regression could hint at two things.
+ Either my model has overfitted the data or a non-linear regression model
+ is a more suitable choice for the sSFR data (or a mix of the two).
+ Considering that both the training error and the test error are greatly
+ reduced and the training error is not very close to 
+\begin_inset Formula $0$
+\end_inset
+
+ are venture myself out on a limb and conclude that my non-linear regression
+ model has only overfitted the data a little, if at all, and instead conclude
+ that a non-linear regression model fits the sSFR data better.
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - What other methods could I have used?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Could have used support vector machines or neural networks ..
 \end_layout
 
@@ -1098,6 +1138,11 @@ Could have used support vector machines or neural networks ..
 
 \begin_layout Subsubsection*
 - - Why did I not use those methods, but instead chose to do, what I did?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3194,53 +3239,208 @@ Question 7 (multi-class classification)
 \end_layout
 
 \begin_layout Standard
-The data is very scarce and some of the classes have very few data points
- assigned to them.
+I played around with many different options and trained several different
+ models before landing on my final two; linear discriminant analysis
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.lda.LDA.html
+\end_layout
+
+\end_inset
+
+ (LDA) and random forest
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClass
+ifier.html
+\end_layout
+
+\end_inset
+
+ for multi classification of the Variable Stars data set.
+\end_layout
+
+\begin_layout Standard
+Note that the data is very scarce and some of the classes have very few
+ data points assigned to them.
  This might affect the solutions greatly as the small classes might be forgotten.
- The more the merrier ..
- 
 \end_layout
 
 \begin_layout Subsubsection*
-- Very short, what is linear regression
+Linear multi classification
+\end_layout
+
+\begin_layout Standard
+The reason of choice lies in the fact that we had to implement LDA in one
+ of the mandatory assignments and I found it quite fun to implement and
+ work with and found LDA to be one of the ML methods that was somewhat easy
+ to grasp and play with.
+ The LDA build in the mandatory assignment left me an impression that LDA
+ works rather well generally and as it does not have to any hyperparameters
+ to worry about it is a very simple model and easy to work with
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+and also gave me some decent results in this exercise
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The only thing that bothers me about LDA is that it assumes that all the
+ class covariances are identical
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+so what?
+\end_layout
+
+\end_inset
+
+, as based on my current ML experience this only happens in custom designed
+ data sets
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+risky to say that?
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When using LDA to classify the Variable Stars data set, the model is fit
+ with the training data, I get an accuracy of 
+\begin_inset Formula $81.5823605707\%$
+\end_inset
+
+ on the training data and an accuracy of 
+\begin_inset Formula $71.3359273671\%$
+\end_inset
+
+ on the test data.
 \end_layout
 
 \begin_layout Subsubsection*
-- Just-ish as short, what is our problem
+Non-linear multi classification
 \end_layout
 
-\begin_layout Subsubsection*
-- How can machine learning help us to fix our problem? <- just very short?
- -> One general sentence, followed by a more specific sentence that mentions
- how linear regression can help us
+\begin_layout Standard
+I find the simplicity and easy-achievable efficiency of random forests to
+ be intriguing.
+ Random forests makes few assumptions on the data opposed to many other
+ classifiers and ...
+ and it was one of the classifiers I tried out that gave the best results
+ on the test set (human overfitting much?).
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ The major downside of random forests is that they are 
 \end_layout
 
-\begin_layout Subsubsection*
-- How have I done it? the code
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsubsection*
-- What are my results? (Deliverables)
+\begin_layout Standard
+As random forests has 
+\emph on
+a lot
+\emph default
+ of hyperparameters I of course used the standard grid search and cross
+ validation techniques to try and optimize these.
+ Some of the main components to decide upon is the number of trees 
+\begin_inset Formula $B$
+\end_inset
+
+ where i tried different numbers between 
+\begin_inset Formula $1-1000$
+\end_inset
+
+ and I determine the number of max.
+ features 
+\begin_inset Formula $m$
+\end_inset
+
+ to be 
+\begin_inset Formula $\left\lfloor \sqrt{D}\right\rfloor $
+\end_inset
+
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the dimension of the data
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+we know that?
 \end_layout
 
-\begin_layout Subsubsection*
-- What other methods could I have used?
+\end_inset
+
+.
+ As I do not yet have that much experience with random forests I am a bit
+ short on good values for the other parameters, but I have just tried to
+ play around with them.
 \end_layout
 
-\begin_layout Subsubsection*
-- - What is good and bad about my method?
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsubsection*
-- - What else could I have used, what are their strength and weaknesses?
+\begin_layout Standard
+When using the build classifier I achieve an accuracy of 
+\begin_inset Formula $100\%$
+\end_inset
+
+ on the training data and an accuracy of 
+\begin_inset Formula $??\%$
+\end_inset
+
+ on the test data set.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Compare the two models?
 \end_layout
 
-\begin_layout Subsubsection*
-- - Why did I not use those methods, but instead chose to do, what I did?
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

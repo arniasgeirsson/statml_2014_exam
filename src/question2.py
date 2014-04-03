@@ -1,23 +1,37 @@
 import modules.common as com
-from sklearn.svm import SVR
-import numpy as np
+import modules.config as con
+from sklearn import grid_search
+from sklearn.ensemble import RandomForestRegressor
 
-_, i_train, t_train, _ = com.parseData("data/SSFRTrain2014.dt")
-_, i_test,  t_test,  _ = com.parseData("data/SSFRTest2014.dt")
+toNormalize = True
+# Read the given train and test data sets
+d, train_X, train_T, M = com.parseData("data/SSFRTrain2014.dt",
+                                        normalizeX=toNormalize)
+_, test_X,  test_T,  _ = com.parseData("data/SSFRTest2014.dt",
+                                        normalizeX=toNormalize,
+                                        normY=com.splitdata(d)[0])
 
-# http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html#sklearn.svm.SVR
-# http://scikit-learn.org/stable/auto_examples/svm/plot_svm_regression.html
+parameters = {'n_estimators':[10,100,250], 'max_features':[int(M/3),M],
+             'max_depth':[None], 'min_samples_split':[2,8],
+             'min_samples_leaf':[3,5], 'criterion':['mse']}
 
-# Use something other than a svm
-# https://absalon.itslearning.com/ContentArea/ContentArea.aspx?LocationID=52903&LocationType=1
+if not con.recompute:
+    parameters = {'n_estimators':[100], 'max_features':[int(M/3)],
+             'max_depth':[None], 'min_samples_split':[2],
+             'min_samples_leaf':[3], 'criterion':['mse']}
 
-C = 20.0
-epsilon = 0.01
+# Use gridsearch and cross validation to find the best hyperparameters
+# and train the final model with those.
+model = RandomForestRegressor(n_jobs=con.n_jobs)
+model = grid_search.GridSearchCV(model, parameters, cv = con.cv,
+                                    n_jobs = con.n_jobs, verbose=con.verbose)
+model.fit(train_X,train_T)
 
-model = SVR(kernel = 'rbf', C = C, epsilon = epsilon)
-model.fit(i_train,t_train)
+# Print all the hyperparameters and the best ones
+print "All hyperparameters:\n\t", parameters
+print "Best hyperparameters:\n\t", model.best_params_
 
-print "Mean square error of the training data set: " \
-        , com.MSE(model.predict(i_train),t_train)
-print "Mean square error of the test data set: " \
-        , com.MSE(model.predict(i_test),t_test)
+print "Mean square error of the training data set:" \
+        , com.MSE(model.predict(train_X),train_T)
+print "Mean square error of the test data set:\t\t" \
+        , com.MSE(model.predict(test_X),test_T)
