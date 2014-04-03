@@ -774,7 +774,7 @@ When performing linear regression we rewrite
 \end_inset
 
 , where 
-\begin_inset Formula $i\text{\neq}0$
+\begin_inset Formula $i\text{≠}0$
 \end_inset
 
 .
@@ -1686,9 +1686,6 @@ As we can see SVMs for binary classification can be pretty good, but it
  to project the data into a space where they indeed are linear separable.
  I have a hard time expecting those two methods to perform better then the
  trained SVM (unless the SVM is way overfitted).
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -1699,9 +1696,6 @@ I could have used LDA, perceptron, linear classification ..
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection*
 \begin_inset Note Note
 status collapsed
 
@@ -1717,9 +1711,6 @@ Difficult and possible very computational expensive to find good hyperparameters
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection*
 \begin_inset Note Note
 status collapsed
 
@@ -1738,13 +1729,14 @@ status collapsed
 
 \begin_layout Subsection
 Question 4 (principal component analysis)
-\end_layout
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subsubsection*
 - Very short, what is pca?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - see below
 \end_layout
 
@@ -1752,7 +1744,7 @@ Question 4 (principal component analysis)
 - Just-ish as short, what is our problem
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - see below
 \end_layout
 
@@ -1762,13 +1754,29 @@ Question 4 (principal component analysis)
  how linear regression can help us
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - see below
 \end_layout
 
 \begin_layout Subsubsection*
 - - To sum up the three above - why are we doing pca and these plots? Why
  are they interesting?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Have to mention why I normalize? http://stats.stackexchange.com/questions/69157/wh
+y-do-we-need-to-normalize-data-before-analysis
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1781,105 +1789,123 @@ SGTrain2014.dt
 \end_layout
 
 \begin_layout Standard
-PCA is what? -> One way to describe PCA is to say that it is a way to try
- and find the meaning of the madness.
- A little more technically description is to say that PCA transforms the
- data in such a way that the greatest variance lie on the first axis and
- the second on the second axis and so on.
+One way to describe PCA is to say that it is a technique to try and find
+ the meaning of the madness by sorting the variance in the data by size.
+ A little more technically description is to say that 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+PCA transforms the data in such a way that the greatest variance lie on
+ the first axis and the second greatest on the second axis and so on.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The above line and the one below could be combined into one
 \end_layout
 
-\begin_layout Standard
-PCA uses the eigenvalues and eigenvectors of the data to transform (rotate
- and move) the data so that the greatest/most important eigenvector is aligned
- with the first axis of the coordinate system, and that the 
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+PCA uses the eigenvalues and eigenvectors of the data to transform
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ (rotate and move)
+\end_layout
+
+\end_inset
+
+ the data so that the greatest eigenvector is aligned with the first axis
+ of the coordinate system, and that the 
 \emph on
 n
 \emph default
-'th greatest/most important eigenvector is aligned with the 
+'th greatest eigenvector is aligned with the 
 \emph on
 n
 \emph default
 'th axis, hence the PCA can project the data in dimensions equal to or lower
  than the input dimension.
-\end_layout
-
-\begin_layout Standard
-Why would one want to use it? -> As hinted above PCA can be a very good
- tool to extract the most important features of some dataset, to get rid
- of some noise parameters or visualize some high dimensional data, in a
- humanly perceptually way.
- Which is exactly what we want to do in this exercise for the given galaxy
- data.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hence PCA can only be performed once one a given data set, as doing it multiply
- times will not result in any new changes as the data is already 'perfectly'
- aligned with the axis.
+ This also means that PCA can only be performed once one a given data set,
+ as doing it multiply times will not result in any new changes as the data
+ is already 'perfectly' aligned with the axis
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Fit in somewhere?
+Is it good enough to keep?
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
+Why would one want to use PCA? As hinted above PCA can be a very good tool
+ to extract the most important features of some dataset, to get rid of some
+ noise parameters or visualize some high dimensional data, in a humanly
+ perceptually way.
+ Which is exactly what we want to do in this exercise for the given galaxy
+ data.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-What are we using it for? -> 
-\end_layout
-
-\begin_layout Standard
-- see above?
-\end_layout
-
-\begin_layout Subsubsection*
-- How have I done it? the code
-\end_layout
-
-\begin_layout Standard
-To perform the actual principle component analysis I have used the 
+\begin_layout Plain Layout
+As already stated I have used the 
 \emph on
 PCA
 \emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
-\end_layout
-
-\end_inset
-
  module from the 
 \emph on
 sci-kit learn
 \emph default
- library.
- Once again the code written to perform the principal component analysis
+ library to perform the actual principle component analysis and can be viewed
+ in the 
+\emph on
+src/question4.py
+\emph default
+ file
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+so what? delete this line?
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Once again the code written to perform the principal component analysis
  is incredible simple and I will therefore go directly to a presentation
  and discussion of my results.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Note that I am well aware that 
 \emph on
 sci-kit learn
@@ -1899,16 +1925,9 @@ I am sure we haven't covered this?
 
 \end_layout
 
-\begin_layout Subsubsection*
-- What does it do? / What is happening? Theoretically
-\end_layout
+\end_inset
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-Should I write more about the theory?
 \end_layout
 
 \end_inset
@@ -1917,29 +1936,19 @@ Should I write more about the theory?
 \end_layout
 
 \begin_layout Subsubsection*
-- What are my results? (Deliverables)
+Results
 \end_layout
 
 \begin_layout Standard
 Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:2_4_1_eigenspectrum"
+reference "fig:2_4_1_combined"
 
 \end_inset
 
- shows a plot of the eigenspectrum which describes/visualizes ...
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-what?
-\end_layout
-
-\end_inset
-
-
+ shows a plot of the eigenspectrum (the green and squared line) which describes
+ the size of the eigenvalues.
 \end_layout
 
 \begin_layout Standard
@@ -1951,7 +1960,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Figures/2_4_1-eigenspectrum.png
+	filename Figures/2_4_1-combined_eigen.png
 	lyxscale 60
 	scale 70
 
@@ -1973,7 +1982,7 @@ TODO
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:2_4_1_eigenspectrum"
+name "fig:2_4_1_combined"
 
 \end_inset
 
@@ -1994,20 +2003,11 @@ name "fig:2_4_1_eigenspectrum"
 Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:2_4_2_eigenimportance"
+reference "fig:2_4_1_combined"
 
 \end_inset
 
- shows a plot of how much the eigenvalues/eigenvectors additivly
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-or commulatively?
-\end_layout
-
-\end_inset
-
+ also shows a plot of how much the eigenvalues/eigenvectors cumulatively
  cover the variance
 \begin_inset Note Note
 status open
@@ -2018,7 +2018,7 @@ rephrase, even correct?
 
 \end_inset
 
-.
+ (the purple and circled line).
  We can see that by only looking at the first principle component we have
  already covered about 
 \begin_inset Formula $85\%$
@@ -2026,8 +2026,8 @@ rephrase, even correct?
 
  the data.
  This can be useful to determine how many principal components one should
- look at, as based on the figure one might argue that the added computation
- time is not worth the last 
+ look at when doing dimensionality reduction, as based on the figure one
+ might argue that the added computation time is not worth the last 
 \begin_inset Formula $2\%$
 \end_inset
 
@@ -2039,17 +2039,19 @@ rephrase, even correct?
 \begin_inset Formula $10$
 \end_inset
 
- principle components, or one could deem those last percentage to be noise.
- One can see how a diminishing return effect occurs when increasing the
- number of principal components/dimensions to the increase (or the loss
- of decrease) in data size and computation time.
-\end_layout
+ principle components, or if one like to live dangerously one could deem
+ those last percentage to be noise.
+ We can see how a diminishing return effect occurs when increasing the number
+ of principal components to the increase (or the loss of decrease) in data
+ size and computation time.
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2093,6 +2095,18 @@ name "fig:2_4_2_eigenimportance"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Figure 
 \begin_inset CommandInset ref
@@ -2101,18 +2115,8 @@ reference "fig:2_4_3_scatterpoints"
 
 \end_inset
 
- is a great example of using PCA to do dimensionality
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-or in some other tens?
-\end_layout
-
-\end_inset
-
- reduction allowing for the ability to visualize a high dimensionality data
- set.
+ is a great example of using PCA to do dimensionality reduction allowing
+ for the ability to visualize a high dimensionality data set.
  The input data is reduced to the first two principal components i.e.
  reduced to 
 \begin_inset Formula $2$
@@ -2120,9 +2124,18 @@ or in some other tens?
 
  dimensions.
  The plot also shows the eigenvectors (multiplied by the root of their respectiv
-e eigenvalue) which shows that they are beautifully 'sorted' (sorted ->
- the longest vector is aligned with the first axis and the second longest
- with the second vector) and aligned with the two axises/axis.
+e eigenvalue) which shows that they are beautifully 'sorted'
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ (sorted -> the longest vector is aligned with the first axis and the second
+ longest with the second vector)
+\end_layout
+
+\end_inset
+
+ and aligned with the two axes.
 \end_layout
 
 \begin_layout Standard
@@ -2134,7 +2147,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Figures/2_4_3-scatter.png
+	filename Figures/2_4_2-scatter.png
 	lyxscale 60
 	scale 70
 
