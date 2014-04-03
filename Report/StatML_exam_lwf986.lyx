@@ -3247,30 +3247,6 @@ The data is very scarce and some of the classes have very few data points
 Question 8 (overfitting)
 \end_layout
 
-\begin_layout Standard
-John Langford, who is “Doctor of Learning at Microsoft Research”, maintains
- a very interesting blog (web log).
- Read the very true blog entry: “Clever methods of overfitting,” http://hunch.net
-/?p=22, 2005.
- Choose three of the different types of overfitting and discuss if and how
- they can occur when applying machine learning techniques to the variable
- star classification task.
- Ignore the last type of overfitting and issues related to reviewing of
- scientific papers (still, it is good to keep them in mind).
-\end_layout
-
-\begin_layout Standard
-Deliverables: Short discussion addressing three “methods of overfitting”
- listed in the blog entry
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Traditional overfitting
 \begin_inset CommandInset label
@@ -3283,14 +3259,10 @@ name "sub:Traditional-overfitting"
 \end_layout
 
 \begin_layout Standard
-* Too few data points, too complex data (requires complex predictor).
-\end_layout
-
-\begin_layout Standard
--> Considering that there is so few data points but so many features and
- classes, one might be concerned of traditional overfitting as there simply
- might not be enough data points to create a generally well performing classifie
-r.
+Considering that there are so few data points but so many features and classes
+ in the Variable Star data set, one might be concerned of traditional overfittin
+g as there might simply not be enough data points to create a generally
+ well performing classifier.
 \end_layout
 
 \begin_layout Standard
@@ -3300,7 +3272,7 @@ This affects the classification in such a way that it has trouble finding
  Which is all we have, the training data, so it is the only set of data
  that we can use to decide wether or not our solution is good enough, and
  hence we strive to get a good result before stopping, but a good result
- (say 90% acc.) might be way to late, but we wouldn't notice.
+ (say 90% acc.) might have crossed the overfitting boundary without us noticing.
 \end_layout
 
 \begin_layout Standard
@@ -3313,59 +3285,18 @@ Parameter tweak overfitting
 \end_layout
 
 \begin_layout Standard
-* Having many hyperparameters in the classifier and picking those that give
- the highest training accuracy/lowest training error.
-\end_layout
-
-\begin_layout Standard
--> Does not affect my q7 must, but is a valid factor and easy to talk about.
-\end_layout
-
-\begin_layout Standard
--> This has not been such a big concern when fitting my classifiers in question
+This has not been such a big concern when fitting my classifiers in question
  7.
- Yet it is still a very big concern in machine learning in general, as once
- you move away from simple classifier such as KNN which only have a very
- few and conceptually simple hyperparameters, and move on to more advanced
+ Yet, it is still a very big concern in machine learning in general, as
+ once you move away from simple classifier such as KNN which only have a
+ very few and conceptually simple hyperparameters, and move on to more advanced
  and complex classifiers, or regression models for that matter, you tend
  to get an increase in the number of hyperparameters, and tweaking these
  just right, without a tendency towards overfitting is very hard.
  When dealing with many hyperparameters it is often hard to distinguish
  between their meaning when comparing their values with the results of the
- build classifier and hence also hard to figure hard when the chosen values
+ build classifier and hence also hard to figure out when the chosen values
  favor the training data too much, hence overfitting.
-\end_layout
-
-\begin_layout Subsubsection
-Brittle measure
-\end_layout
-
-\begin_layout Standard
-* 
-\end_layout
-
-\begin_layout Standard
--> Talk about how I use cross validation, and mention that it was an very
- interesting read, to read the comments? Still somewhat hard to fully talk
- about.
-\end_layout
-
-\begin_layout Subsubsection
-Bad statistics
-\end_layout
-
-\begin_layout Subsubsection
-Incomplete Prediction
-\end_layout
-
-\begin_layout Standard
-* 
-\end_layout
-
-\begin_layout Standard
--> Seeing as we have so many classes in the Variable Stars exercise.
- One could be fooled to build a set of binary classifiers instead of a multi-cla
-ss classifier.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3373,12 +3304,7 @@ Data set selection
 \end_layout
 
 \begin_layout Standard
-* When making ones results look better by extracting a subset of the data
- and only use that.
-\end_layout
-
-\begin_layout Standard
--> This will quickly result in overfitting for many of the reasons described
+This will quickly result in overfitting for many of the reasons described
  above in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3387,13 +3313,21 @@ reference "sub:Traditional-overfitting"
 \end_inset
 
 .
- Seeing that we don't have many training points and it is somewhat hard
- to get very good results with the created classifiers, one might be very
- tempted to focus on the training error and try to maximize this (if considered
- both the given training and test data to be one component) and therefore
- possible overfit the classifier.
- One of the golden rules we have learned in the StatML course is that going
- for 0 empirical risk
+ Seeing that we don't have many that training points and it is somewhat
+ hard to get very good results with the created classifiers, one might be
+ very tempted to focus on the training error and try to maximize this
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ (if considered both the given training and test data to be one component)
+\end_layout
+
+\end_inset
+
+ and therefore possibly overfit the classifier.
+ One of the golden rules we have learned in this course is that going for
+ 0 empirical risk
 \begin_inset Note Note
 status open
 
@@ -3408,16 +3342,16 @@ correct? Check slides
 \begin_inset Formula $100\%$
 \end_inset
 
- accuracy/
-\begin_inset Formula $0$
-\end_inset
-
- error on the training data, just use 1-nearest neighbor and you are (almost)
- guaranteed a perfect score on your training data.
+ accuracy on the training data, just use 1-nearest neighbor and you are
+ (
+\emph on
+almost
+\emph default
+) guaranteed a perfect score on your training data.
  Then you have learned your training data by heart, and at the same time
  overfitted your classifier.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Write more, maybe make it more focused on something I have used in the Variable
